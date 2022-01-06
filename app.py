@@ -30,11 +30,12 @@ def search():
     query = request.form.get("query")
     tasks = list(mongo.db.tasks.find({"$text": {"$search": query}}))
     return render_template("tasks.html", tasks=tasks)
-
+  
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
+        is_admin = "on" if request.form.get("is_urgent") else "off"
         # check if username already exists in db
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
@@ -45,6 +46,9 @@ def register():
 
         register = {
             "username": request.form.get("username").lower(),
+            "email": request.form.get("email").lower(),
+            "is_admin": is_admin,
+            "admin": "no",
             "password": generate_password_hash(request.form.get("password"))
         }
         mongo.db.users.insert_one(register)
@@ -88,12 +92,13 @@ def login():
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
+    tasks = list(mongo.db.tasks.find())
     # grab the session user's username from db
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
 
     if session["user"]:
-        return render_template("profile.html", username=username)
+        return render_template("profile.html", username=username, tasks=tasks)
 
     return redirect(url_for("login"))
 
@@ -109,13 +114,15 @@ def logout():
 @app.route("/add_task", methods=["GET", "POST"])
 def add_task():
     if request.method == "POST":
-        is_urgent = "on" if request.form.get("is_urgent") else "off"
+        is_bseller = "on" if request.form.get("is_bseller") else "off"
         task = {
             "category_name": request.form.get("category_name"),
-            "task_name": request.form.get("task_name"),
-            "task_description": request.form.get("task_description"),
-            "is_urgent": is_urgent,
-            "due_date": request.form.get("due_date"),
+            "book_name": request.form.get("book_name"),
+            "book_author": request.form.get("book_author"),
+            "book_description": request.form.get("book_description"),
+            "is_bseller": is_bseller,
+            "book_pages": request.form.get("book_pages"),
+            "book_isbn": request.form.get("book_isbn"),
             "created_by": session["user"]
         }
         mongo.db.tasks.insert_one(task)
@@ -129,16 +136,19 @@ def add_task():
 @app.route("/edit_task/<task_id>", methods=["GET", "POST"])
 def edit_task(task_id):
     if request.method == "POST":
-        is_urgent = "on" if request.form.get("is_urgent") else "off"
+        is_bseller = "on" if request.form.get("is_bseller") else "off"
         submit = {
             "category_name": request.form.get("category_name"),
-            "task_name": request.form.get("task_name"),
-            "task_description": request.form.get("task_description"),
-            "is_urgent": is_urgent,
-            "due_date": request.form.get("due_date"),
+            "book_name": request.form.get("book_name"),
+            "book_author": request.form.get("book_author"),
+            "book_description": request.form.get("book_description"),
+            "is_bseller": is_bseller,
+            "book_pages": request.form.get("book_pages"),
+            "book_isbn": request.form.get("book_isbn"),
             "created_by": session["user"]
         }
-        mongo.db.tasks.update({"_id": ObjectId(task_id)}, submit)
+        print({"_id": ObjectId(task_id)}, submit)
+        mongo.db.tasks.replace_one({"_id": ObjectId(task_id)}, submit)
         flash("Task Successfully Updated")
 
     task = mongo.db.tasks.find_one({"_id": ObjectId(task_id)})
@@ -148,7 +158,7 @@ def edit_task(task_id):
 
 @app.route("/delete_task/<task_id>")
 def delete_task(task_id):
-    mongo.db.tasks.remove({"_id": ObjectId(task_id)})
+    mongo.db.tasks.delete_one({"_id": ObjectId(task_id)})
     flash("Task Successfully Deleted")
     return redirect(url_for("get_tasks"))
 
@@ -178,7 +188,7 @@ def edit_category(category_id):
         submit = {
             "category_name": request.form.get("category_name")
         }
-        mongo.db.categories.update({"_id": ObjectId(category_id)}, submit)
+        mongo.db.categories.replace_one({"_id": ObjectId(category_id)}, submit)
         flash("Category Successfully Updated")
         return redirect(url_for("get_categories"))
 
@@ -188,10 +198,17 @@ def edit_category(category_id):
 
 @app.route("/delete_category/<category_id>")
 def delete_category(category_id):
-    mongo.db.categories.remove({"_id": ObjectId(category_id)})
+    mongo.db.categories.delete_one({"_id": ObjectId(category_id)})
     flash("Category Successfully Deleted")
     return redirect(url_for("get_categories"))
 
+
+@app.route("/get_book/<task_id>", methods=["GET", "POST"])
+def get_book(task_id): 
+    task = mongo.db.tasks.find_one({"_id": ObjectId(task_id)})
+    categories = mongo.db.categories.find().sort("category_name", 1)
+    return render_template("get_book.html", task=task, categories=categories)
+    
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),

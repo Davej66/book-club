@@ -123,6 +123,7 @@ def add_task():
             "is_bseller": is_bseller,
             "book_pages": request.form.get("book_pages"),
             "book_isbn": request.form.get("book_isbn"),
+            "book_cover": request.form.get("book_cover"),
             "created_by": session["user"]
         }
         mongo.db.tasks.insert_one(task)

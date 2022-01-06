@@ -14,3 +14,10 @@
     margin: 5px;
     line-height: 42px;
 }
+
+.card .card-image > img{
+    max-height: 19rem;
+    max-width: 15.9rem;
+    min-height: 19rem;
+    min-width: 15.9rem;
+}

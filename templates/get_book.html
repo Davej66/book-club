@@ -80,6 +80,15 @@
                 <label for="book_isbn">ISBN -13</label>
             </div>
         </div>
+        <!--book cover-->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-pencil-alt prefix light-blue-text text-darken-4"></i>
+                <input id="book_cover" name="book_cover" minlength="13" maxlegth="100" value="{{ task.book_cover }}" type="text" class="validate"
+                    required>
+                <label for="book_cover">Book cover </label>
+            </div>
+        </div>
         <!--submit button-->
         <div class="row">
             <div class="col-12 center-align">

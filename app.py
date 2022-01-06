@@ -146,6 +146,7 @@ def edit_task(task_id):
             "is_bseller": is_bseller,
             "book_pages": request.form.get("book_pages"),
             "book_isbn": request.form.get("book_isbn"),
+            "book_cover": request.form.get("book_cover"),
             "created_by": session["user"]
         }
         print({"_id": ObjectId(task_id)}, submit)

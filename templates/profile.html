@@ -1,65 +1,62 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <h3 class="center-align">Register</h3>
 
-    <div class="row">
-        <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('register') }}">
-            <div class="card-panel">
-                <!--Username-->
+<div class="row">
+    <fdiv class="col s12 m8 offset-m2">
+        <div class="card-panel">
+            <h3 class="center-align light-blue-text text-darken-4">
+                {{ username }}'s Profile
+            </h3>
+        </div>
+</div>
+</div>
+
+{% if tasks|length > 0 %}
+<ul class="row">
+    
+    <li>
+        <div class="row ">
+            <div class="row">
                 <div class="row">
-                    <div class="input-field col s12">
-                        <i class="fas fa-user-plus prefix light-blue-text darken-4"></i>
-                        <input id="username" name="username" type="text" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
-                        <label for="username">Username</label>
-                      </div>
-                </div>
-                <!--email-->
-                <div class="row">
-                    <div class="input-field col s12">
-                        <i class="fas fa-user-plus prefix light-blue-text darken-4"></i>
-                        <input id="email" name="email" type="text" minlength="5" maxlength="30" pattern="^[a-zA-Z0-9@.]{5,30}$" class="validate" required>
-                        <label for="email">Your email</label>
-                      </div>
-                </div>
-                <!--Admin request toggle-->
-                <div class="row">
-                    <div class="input-field col-12">
-                        <div class="switch">
-                            <i class="fas fa-exclamation-circle prefix light-blue-text text-darken-4"></i>
-                            <label for="is_admin">
-                                <input type="checkbox" id="is_admin" name="is_admin">
-                                <span class="lever"></span>
-                                Request Admin status
-                            </label>
+                    {% for task in tasks %}
+                    {% if session.user|lower == task.created_by|lower or session.user|lower == "admin"|lower %}
+                    <div class="col s12 m4">
+                        <div class="card light-blue darken-4 text-shadow center-align">
+                            <div class="card-content white-text">
+                                <span class="card-title">{{ task.book_name }}
+                                {% if task.is_bseller == "on" %}
+                                <i class="fas fa-exclamation-circle light-blue-text text-lighten-2 tooltipped"
+                                    data-position="right" data-tooltip="Bestseller!"></i>
+                                {% endif %}
+                                </span>
+                            </div>
+                            <div class="card-action">
+                                {% if session.user|lower == task.created_by|lower or session.user|lower == "admin"|lower %}
+                                <a href="{{ url_for('delete_task', task_id=task._id) }}"
+                                    class="btn-small green accent-4">Delete</a>
+                                <a href="{{ url_for('edit_task', task_id=task._id) }}"
+                                    class="btn-small light-blue lighten-1">Edit</a>
+                                {% endif %}
+                                <a href="{{ url_for('get_book', task_id=task._id) }}"
+                                    class="btn-small light-yellow lighten-1">More</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <!--password-->
-                <div class="row">
-                    <div class="input-field col s12">
-                        <i class="fas fa-user-lock prefix light-blue-text darken-4"></i>
-                        <input id="password" name="password" type="password" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
-                        <label for="password">Password</label>
-                    </div>
-                </div>
-                <!--register-->
-                <div class="row">
-                    <button type="submit" class="col s12 btn-large light-blue darken-4 text-shadow">
-                        Register <i class="fas fa-sign-in-alt"></i>
-                    </button>
+                    {% endif %}
+                    {% endfor %}
                 </div>
             </div>
-        </form>
-    </div>
 
-    <div class="row">
-        <div class="col s12">
-            <p class="center-align">
-                Already Registered? 
-                <a href="{{ url_for('login') }}" class="light-blue-text text-darken-">Log In</a>
-            </p>
+
+
         </div>
-    </div>
+    </li>
+    
+</ul>
+{% else %}
+<h3 class="red-text text-darken-4 center-align">No Records Found</h3>
+{% endif %}
+
 
 {% endblock %}

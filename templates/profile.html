@@ -6,6 +6,7 @@
     <fdiv class="col s12 m8 offset-m2">
         <div class="card-panel">
             <h3 class="center-align light-blue-text text-darken-4">
+                <img src="{{ user_avatar }}" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
                 {{ username }}'s Profile
             </h3>
         </div>
@@ -25,7 +26,6 @@
                         <div class="card large light-blue darken-4 text-shadow center-align">
                             <div class="card-image">
                                 <img src="{{ task.book_cover }}">
-                                <span class="card-title">Card Title</span>
                             </div>
                             <div class="card-content white-text">
                                 <span class="card-title title-text">{{ task.book_name }}
@@ -45,19 +45,51 @@
                                 <a href="{{ url_for('get_book', task_id=task._id) }}"
                                     class="btn-small light-yellow lighten-1">More</a>
                             </div>
+                            
                         </div>
                     </div>
                     {% endif %}
                     {% endfor %}
                 </div>
+                
+
+
+
+            <div class="row card-panel grey lighten-5">
+                <div class="col s12">
+                    <p>Reviews wriiten by you</p>
+                    <div class="blue lighten-4 col s10">
+                        {% if reviews|length > 0 %}
+                            {% for review in reviews %}
+                            {% if session.user|lower == review.reviewed_by|lower %}
+                            <div>
+                                <div class="">
+                                    <div class="card-panel blue lighten-4 z-depth-1 col s12">
+                                      <div class="row valign-wrapper">
+                                        <div class="col s2">
+                                          <img src="{{ review.user_avatar }}" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+                                        </div>
+                                        <div class="col s12">
+                                          <span class="blue lighten-4">
+                                            <p><strong>Book : {{ review.book_title }}~ </strong> {{ review.book_review }}</p>
+                                          </span>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                <div>
+                            </div>
+                            {% endif %}    
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>  
             </div>
-
-
-
         </div>
     </li>
-    
+  
 </ul>
+
 {% else %}
 <h3 class="red-text text-darken-4 center-align">No Records Found</h3>
 {% endif %}

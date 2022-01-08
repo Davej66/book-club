@@ -5,6 +5,7 @@ from flask import (
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
+from datetime import datetime
 if os.path.exists("env.py"):
     import env
 
@@ -49,7 +50,8 @@ def register():
             "email": request.form.get("email").lower(),
             "is_admin": is_admin,
             "admin": "no",
-            "password": generate_password_hash(request.form.get("password"))
+            "password": generate_password_hash(request.form.get("password")),
+            "user_avatar": request.form.get("user_avatar")
         }
         mongo.db.users.insert_one(register)
 
@@ -93,12 +95,13 @@ def login():
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
     tasks = list(mongo.db.tasks.find())
+    reviews = list(mongo.db.reviews.find())
     # grab the session user's username from db
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
 
     if session["user"]:
-        return render_template("profile.html", username=username, tasks=tasks)
+        return render_template("profile.html", username=username, tasks=tasks, reviews=reviews)
 
     return redirect(url_for("login"))
 
@@ -208,8 +211,21 @@ def delete_category(category_id):
 @app.route("/get_book/<task_id>", methods=["GET", "POST"])
 def get_book(task_id): 
     task = mongo.db.tasks.find_one({"_id": ObjectId(task_id)})
+    reviews = list(mongo.db.reviews.find())
     categories = mongo.db.categories.find().sort("category_name", 1)
-    return render_template("get_book.html", task=task, categories=categories)
+
+    if request.method == "POST":
+        review_details = {
+            "book_review": request.form.get("book_review"),
+            "book_title": task["book_name"],
+            "reviewed_by": session["user"],
+            "created_on": datetime.now()
+        }
+
+        mongo.db.reviews.insert_one(review_details)
+        flash("Category Successfully Updated")
+    
+    return render_template("get_book.html", task=task, categories=categories, reviews=reviews)
     
 
 if __name__ == "__main__":

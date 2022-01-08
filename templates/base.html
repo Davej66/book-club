@@ -18,10 +18,12 @@
 
 <body>
   <header>
+    
     <!-- top navbar -->
-    <nav class="nav-extended text-shadow light-blue darken-1">
+    <nav class="nav-extended text-shadow light-blue">
       <div class="nav-wrapper">
-        <a href="{{ url_for('get_tasks') }}" class="brand-logo">Book Club</a>
+        <a href="{{ url_for('get_tasks') }}" class="brand-logo" style = "position:relative; left:80px; top:2px; ">  Book Club   ~ The never ending search</a>
+
         <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
         <ul class="right hide-on-med-and-down">
           <li><a href="{{ url_for('get_tasks') }}">Home</a></li>
@@ -39,6 +41,7 @@
         </ul>
       </div>
     </nav>
+    
 
     <!-- mobile sidenav -->
     <ul class="sidenav" id="mobile-demo">

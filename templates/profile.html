@@ -90,6 +90,30 @@
   
 </ul>
 
+{% if reviews|length > 0 %}
+        {% for review in reviews %}
+        {% if task.book_name|lower == review.book_title|lower %}
+            <div>
+                <div class="col s12 m8 offset-m2 l6 offset-l3">
+                    <div class="card-panel blue lighten-4 z-depth-1">
+                      <div class="row valign-wrapper">
+                        <div class="col s2">
+                          <img src="{{ review.user_avatar }}" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+                        </div>
+                        <div class="col s12">
+                          <span class="blue lighten-4">
+                            <p><strong>Reviewed by : {{ review.reviewed_by }}~ </strong> {{ review.book_review }}. Added on {{ review.created_on }}</p>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <div>
+            </div>
+        {% endif %}
+        {% endfor %}
+    {% endif %}
+
 {% else %}
 <h3 class="red-text text-darken-4 center-align">No Records Found</h3>
 {% endif %}

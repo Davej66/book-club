@@ -1,3 +1,19 @@
+/*  Generl */
+body {
+    background-color: #e3f2fd;
+}
+
+.pcolor-text {
+    color: black;
+}
+.panel-color {
+    background-color: #bbdefb;
+}
+
+.review-color {
+    background-color: #c5cae9;
+}
+
 .text-shadow {
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
@@ -18,8 +34,8 @@
 .card .card-image > img{
     align-content: centers;
     max-height: 19rem;
-    max-width: 15.9rem;
-    min-height: 19rem;
+    max-width: 16.2rem;
+   min-height: 19rem;
     min-width: 15.9rem;
 }
 

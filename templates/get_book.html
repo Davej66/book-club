@@ -10,7 +10,7 @@
         <div class="card-image">
             <img src="{{ task.book_cover }}">
         </div>
-        <div class="card-stacked">
+        <div class="card-stacked panel-color">
             <div class="card-content info-text">
                 <div class="">
                     {% if task.is_bseller == "on" %}
@@ -28,7 +28,7 @@
             </div>
         
             <div class="card-action">
-                <a href="https://www.amazon.co.uk/s?k={{ task.book_isbn }}" target="_blank">Purchase a copy here</a>
+                <a href="https://www.amazon.co.uk/s?k={{ task.book_isbn }}" target="_blank" class="red-text">Purchase a copy here</a>
             </div>
         </div>
     </div>
@@ -50,15 +50,15 @@
 
 <h3 class="light-blue-text text-darken-4 center-align">Add Review</h3>
 
-<div class="row card-panel grey lighten-5">
+<div class="row card-panel review-color">
     <form class="col s12" method="POST" action="">
         <!--book review-->
-        <div class="row">
+        <div class="row  white-text review-color">
             <div class="input-field col s12">
-                <i class="fas fa-pencil-alt prefix light-blue-text text-darken-4"></i>
+                <i class="fas fa-pencil-alt prefix"></i>
                 <input id="book_review" name="book_review" minlength="2" maxlength="500" type="text" class="validate"
                     required>
-                <label for="book_review">Write review here</label>
+                <label for="book_review">Write review here x</label>
             </div>
         </div>
         <!--submit button-->

@@ -47,6 +47,7 @@ body {
     font-size: 1rem;
 }
 
+/* return to top of screen button **/
 #myBtn {
     display: none; /* Hidden by default */
     position: fixed; /* Fixed/sticky position */

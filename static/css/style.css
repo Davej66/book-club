@@ -38,12 +38,14 @@ body {
     line-height: 42px;
 }
 
-.card .card-image > img{
+.card.large .card-image > img{
     align-content: centers;
-    max-height: 19rem;
-    max-width: 16.2rem;
-   min-height: 19rem;
-    min-width: 15.9rem;
+    height: auto;
+    max-width: 240px;
+}
+
+.card-title {
+    max-width: 200px;
 }
 
 .info-text {
@@ -86,12 +88,21 @@ footer.page-footer{
 
 @media screen and (max-width: 992px) {
 
+   /* .card.large.card-title.valign-wrapper {
+        max-height: auto;
+        width: 380px;
+    }*/
+
+    
 
 }
 /* //////////////////////////////// Mobile size devices /////////////////////////////////// */
 
 @media screen and (max-width: 568px) {
 
-
+   /* .card.large.card-title{
+        max-height: auto;
+        width: 280px;
+    }*/
 } 
 

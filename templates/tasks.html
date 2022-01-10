@@ -31,10 +31,10 @@
                     {% for task in tasks %}
                     <div class="col m3">
                         <div class="card large light-blue darken-4 center-align">
-                            <div class="card-image center-align">
+                            <div class="card-image center-align valign-wrapper">
                                 <img src="{{ task.book_cover }}" alt="{{ task.book_name }} book cover">
                             </div>
-                            <div class="card-content white-text ">
+                            <div class="card-content white-text valign-wrapper">
                                 <span class="card-title">{{ task.book_name }}
                                 {% if task.is_bseller == "on" %}
                                 <i class="fas fa-exclamation-circle light-blue-text text-lighten-2 tooltipped"

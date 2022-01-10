@@ -6,9 +6,9 @@
     <h2 class="header"><strong>{{ task.book_name }}</strong></h2>
 
     
-    <div class="card horizontal">
+    <div class="card horizontal container">
         <div class="card-image">
-            <img src="{{ task.book_cover }}">
+            <img src="{{ task.book_cover }}" alt="{{ task.book_name }} book cover">
         </div>
         <div class="card-stacked panel-color">
             <div class="card-content info-text">
@@ -53,12 +53,12 @@
 <div class="row card-panel review-color">
     <form class="col s12" method="POST" action="">
         <!--book review-->
-        <div class="row  white-text review-color">
+        <div class="row  black-text review-color">
             <div class="input-field col s12">
                 <i class="fas fa-pencil-alt prefix"></i>
                 <input id="book_review" name="book_review" minlength="2" maxlength="500" type="text" class="validate"
                     required>
-                <label for="book_review">Write review here x</label>
+                <label for="book_review" class="black-text">Write review here </label>
             </div>
         </div>
         <!--submit button-->

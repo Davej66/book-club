@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h3 class="light-blue-text text-darken-4 center-align">Add Task</h3>
+<h3 class=" black-text center-align">Add Book</h3>
 
 <div class="row card-panel grey lighten-5">
     <form class="col s12" method="POST" action="{{ url_for('add_task') }}">
@@ -15,7 +15,7 @@
                         <option value="{{ category.category_name }}">{{ category.category_name }}</option>
                     {% endfor %}
                 </select>
-                <label for="category_name">Task Category</label>
+                <label for="category_name" class="black-text">Book Category</label>
             </div>
         </div>
         <!--book name-->
@@ -24,7 +24,7 @@
                 <i class="fas fa-pencil-alt prefix light-blue-text text-darken-4"></i>
                 <input id="book_name" name="book_name" minlength="2" maxlength="24" type="text" class="validate"
                     required>
-                <label for="book_name">Book Name</label>
+                <label for="book_name" class="black-text">Book Name</label>
             </div>
         </div>
         <!--book author-->
@@ -33,7 +33,7 @@
                 <i class="fas fa-pencil-alt prefix light-blue-text text-darken-4"></i>
                 <input id="book_author" name="book_author" minlength="5" maxlength="50" type="text" class="validate"
                     required>
-                <label for="book_author">Book Author</label>
+                <label for="book_author" class="black-text">Book Author</label>
             </div>
         </div>
         <!--Book description-->
@@ -42,7 +42,7 @@
                 <i class="fas fa-align-left prefix light-blue-text text-darken-4"></i>
                 <textarea id="book_description" name="book_description" minlength="5" maxlength="3000"
                     class="materialize-textarea validate" required></textarea>
-                <label for="book_description">Book Description</label>
+                <label for="book_description" class="black-text">Book Description</label>
             </div>
         </div>
         <!--is bestseller toggle-->
@@ -50,7 +50,7 @@
             <div class="input-field col-12">
                 <div class="switch">
                     <i class="fas fa-exclamation-circle prefix light-blue-text text-darken-4"></i>
-                    <label for="is_bseller">
+                    <label for="is_bseller"  class="black-text">
                         <input type="checkbox" id="is_bseller" name="is_bseller">
                         <span class="lever"></span>
                         Is Bestseller
@@ -64,7 +64,7 @@
                 <i class="fas fa-pencil-alt prefix light-blue-text text-darken-4"></i>
                 <input id="book_pages" name="book_pages" minlength="1" maxlegth="5" type="text" class="validate"
                     required>
-                <label for="book_pages">Number of Pages</label>
+                <label for="book_pages" class="black-text">Number of Pages</label>
             </div>
         </div>
         <!--isbn 13-->
@@ -73,7 +73,7 @@
                 <i class="fas fa-pencil-alt prefix light-blue-text text-darken-4"></i>
                 <input id="book_isbn" name="book_isbn" minlength="13" maxlegth="13" type="text" class="validate"
                     required>
-                <label for="book_isbn">ISBN -13</label>
+                <label for="book_isbn" class="black-text">ISBN -13</label>
             </div>
         </div>
         <!--book cover-->
@@ -82,7 +82,7 @@
                 <i class="fas fa-pencil-alt prefix light-blue-text text-darken-4"></i>
                 <input id="book_cover" name="book_cover" minlength="13" maxlegth="13" type="text" class="validate"
                     required>
-                <label for="book_cover">Book cover </label>
+                <label for="book_cover" class="black-text">Book cover </label>
             </div>
         </div>
         <!--submit button-->

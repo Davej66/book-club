@@ -1,11 +1,12 @@
 import os
+from datetime import datetime
 from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
-from datetime import datetime
+
 if os.path.exists("env.py"):
     import env
 
@@ -73,12 +74,13 @@ def login():
         if existing_user:
             # ensure hashed password matches user input
             if check_password_hash(
-                    existing_user["password"], request.form.get("password")):
-                        session["user"] = request.form.get("username").lower()
-                        flash("Welcome, {}".format(
-                            request.form.get("username")))
-                        return redirect(url_for(
-                            "profile", username=session["user"]))
+                existing_user["password"], request.form.get("password")):
+                    session["user"] = request.form.get("username").lower()
+                    flash("Welcome, {}".format(
+                        request.form.get("username")))
+                    return redirect(url_for(
+                        "profile", username=session["user"]))
+                
             else:
                 # invalid password match
                 flash("Incorrect Username and/or Password")
@@ -209,7 +211,7 @@ def delete_category(category_id):
 
 
 @app.route("/get_book/<task_id>", methods=["GET", "POST"])
-def get_book(task_id): 
+def get_book(task_id):
     task = mongo.db.tasks.find_one({"_id": ObjectId(task_id)})
     reviews = list(mongo.db.reviews.find())
     categories = mongo.db.categories.find().sort("category_name", 1)
@@ -224,9 +226,7 @@ def get_book(task_id):
 
         mongo.db.reviews.insert_one(review_details)
         flash("Category Successfully Updated")
-    
-    return render_template("get_book.html", task=task, categories=categories, reviews=reviews)
-    
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),

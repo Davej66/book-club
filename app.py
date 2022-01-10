@@ -226,7 +226,8 @@ def get_book(task_id):
 
         mongo.db.reviews.insert_one(review_details)
         flash("Category Successfully Updated")
-
+    
+    return render_template("get_book.html", task=task, categories=categories, reviews=reviews)    
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),

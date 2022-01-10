@@ -67,3 +67,255 @@ body {
   #myBtn:hover {
     background-color: #555; /* Add a dark-grey background on hover */
   }
+
+  
+/* //////////////////////////////// footer/////////////////////////////////// */  
+
+footer.page-footer{
+    background-color: blue;
+ }
+
+/* //////////////////////////////// iPad size devices /////////////////////////////////// */
+
+@media screen and (max-width: 992px) {
+
+#myBtn{
+    right: 0;
+}
+
+
+.row.card.large.valign-wrapper{
+    padding: 1.2rem;
+    margin-left: .3rem;
+    margin-bottom: 3rem;
+}
+
+
+h3{
+    padding: 0 5rem;
+}
+
+
+.edit-profile-form .input-field .prefix ~ input{
+    width: calc(100% - 4rem);
+}
+
+
+.card.small {
+    width: 10.5rem;
+    height: 23.3rem;
+    margin: .7rem auto;
+}
+    
+   
+.card .card-image > img{
+    max-height: 13.43rem;
+    max-width: 10.5rem;
+    min-height: 13.43rem;
+    min-width: 10.5rem;
+}
+
+
+.card .card-action{
+    padding: .8rem 1rem;
+}
+
+
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating){
+    margin-right: 0;
+}
+
+
+.header-box > div{
+    background-color: rgba(250, 250, 240, .4);
+}
+}
+/* //////////////////////////////// Mobile size devices /////////////////////////////////// */
+
+@media screen and (max-width: 568px) {
+
+h3{
+   font-size: 2rem;
+   padding: 0 1rem;
+}
+
+
+h5{
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+
+h4{
+    font-size: 1.4rem;
+}
+
+
+.header-box {
+    background-position: right;
+}
+
+
+.btn-small{
+    font-size: .7rem;
+    margin: 0;
+}
+
+
+.edit-profile-form{
+    margin: 1rem 0;
+}
+
+
+.edit-profile-form .btn-large{
+    margin-left: 1.3rem;
+}
+
+
+.btn-large{
+    min-width: 9.5rem;
+}
+
+
+.row .col .search-form {
+    margin-left: 2rem;
+}
+
+
+.collection-bar{
+    margin: 1rem;
+    padding:.5rem;
+}
+
+
+.book-img-div{
+    text-align: center;
+}
+
+
+#book-detail .row .col.s12{
+    padding: 0 1.5rem 0 1.5rem;
+}
+
+
+.row.card.large.valign-wrapper{
+    margin-left: 0;
+}
+
+
+.col.review-box{
+    padding: 0 1.5rem 1.5rem 1.5rem;
+}
+
+
+.search-form > input[type=text]:not(.browser-default){
+    padding-left: .5rem;
+    padding-right: .5rem;
+    font-size: .8rem;
+    width: 90%;
+} 
+
+
+p.addReadMore {
+    text-align: justify;
+    padding: 0 1.1rem;
+}
+
+
+ul.collection-bar li a{
+    font-size: 1rem;
+}
+
+
+.edit-profile-form .input-field .prefix ~ input{
+    width: calc(100% - 3rem);
+}
+
+
+.card.large{
+    height: 400px;
+}
+
+
+#xl-card{
+    height: 600px;
+}
+
+
+span.badge{
+    font-size: .9rem;
+    padding: 0;
+}
+
+
+.modal-trigger{
+    margin-left: 0.5rem;
+}
+
+
+.collection-item-review .row .col{
+    padding: 0;
+}
+
+
+.collection-item-review .title{
+    padding:0 1rem;
+}
+
+
+blockquote{
+    margin-left: 1rem;
+}
+
+
+small.blue-text{
+    padding-left: 1rem;
+}
+
+
+.add-book-btn{
+    text-align: center;
+}
+
+
+.bordered-box{
+    padding: 1rem
+    !important;
+}
+
+
+.add-book-form .row .col.s12{
+    width: 97%;
+    margin-bottom: .8rem;
+}
+
+
+.add-book-form .row .col.s10{
+    margin-bottom: .8rem;
+}
+
+
+.add-book-form .row{
+    margin: 0;
+}
+
+
+.edit-profile-form{
+    position: relative;
+    left: .3rem
+    !important;
+}
+    
+
+.edit-profile-form .center-align{
+    /* position: relative; */
+    left: 1rem
+    !important;
+}
+
+
+.review-box .input-field>label{
+    position: unset;
+}
+
+} 

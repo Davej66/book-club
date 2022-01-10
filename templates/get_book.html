@@ -6,7 +6,7 @@
     <h2 class="header"><strong>{{ task.book_name }}</strong></h2>
 
     
-    <div class="card horizontal container">
+    <div class="card horizontal container ">
         <div class="card-image">
             <img src="{{ task.book_cover }}" alt="{{ task.book_name }} book cover">
         </div>
@@ -47,7 +47,7 @@
         </a>
     </div>    
 </div>
-
+{% if session.user|lower == task.created_by|lower %}
 <h3 class="light-blue-text text-darken-4 center-align">Add Review</h3>
 
 <div class="row card-panel review-color">
@@ -75,7 +75,11 @@
         </form>
     </div>   
 </div>
-
+{% else %}
+<div>
+    Please sign in to leave a review, not a member register now!
+</div>
+{% endif %}
 {% if reviews|length > 0 %}
         {% for review in reviews %}
         {% if task.book_name|lower == review.book_title|lower %}

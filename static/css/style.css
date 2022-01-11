@@ -8,7 +8,6 @@ body {
 .label {
     color: black;  
 }
-}
 
 .pcolor-text {
     color: black;
@@ -100,7 +99,7 @@ footer.page-footer{
 
 @media screen and (max-width: 568px) {
 
-    .card-title {
+.card-title {
         max-width: 140px;
     }
-
+}

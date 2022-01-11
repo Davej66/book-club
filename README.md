@@ -55,6 +55,25 @@ All pages on this website are responsive to desktop, iPad and, mobile screens. E
 ## - Edit Book Page
 ![image](https://user-images.githubusercontent.com/85559896/148971356-71e7683e-ed41-43bd-bef3-14771a2a8b5f.png)
 
+## - Add Book Page
+
+![image](https://user-images.githubusercontent.com/85559896/148971715-02aec2d6-a8e4-4097-95f7-a78e67575f3b.png)
+
+
+
+## - Manage Category Page
+![image](https://user-images.githubusercontent.com/85559896/148972262-ffde7d29-a86c-4cff-9b7f-cabf5f943171.png)
+
+## - Edit Category Page
+![image](https://user-images.githubusercontent.com/85559896/148972538-a9accd4a-b83a-4a4c-a517-9e29335f38cf.png)
+
+
+
+## - Login Page
+![image](https://user-images.githubusercontent.com/85559896/148971976-d390187b-d97f-4184-87c5-9655b59840b3.png)
+
+
+
 
 
 ## **Yet to be implemented**

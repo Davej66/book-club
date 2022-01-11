@@ -24,6 +24,17 @@ All pages on this website are responsive to desktop, iPad and, mobile screens. E
 
 ## **Existing Features**
 
+## - NAV Bar
+![image](https://user-images.githubusercontent.com/85559896/148970586-7ac7e92b-0a29-4b0b-8b14-578906ab9faf.png)
+
+![image](https://user-images.githubusercontent.com/85559896/148969815-88f50e85-1dbd-42f5-9492-84f229f046f8.png)
+
+![image](https://user-images.githubusercontent.com/85559896/148970767-6bde8491-c9b2-41cd-bb9e-dd8ed387b34f.png)
+
+
+- Features
+- A search box in which users can search for their favorite books by title, author or category.
+- Small book cards with image, title, and author name, which on click navi
 
 ## - Home Page
 ![image](https://user-images.githubusercontent.com/85559896/148966051-24dd836a-8d18-495d-8ad4-d89a7bfbb7ad.png)
@@ -31,6 +42,20 @@ All pages on this website are responsive to desktop, iPad and, mobile screens. E
 - Features
 - A search box in which users can search for their favorite books by title, author or category.
 - Small book cards with image, title, and author name, which on click navigates users to a page with full information of each book.
+
+
+
+
+
+## - Profile Page
+![image](https://user-images.githubusercontent.com/85559896/148970999-05100384-e01d-4ab9-98e4-917b478547f7.png)
+
+
+
+## - Edit Book Page
+![image](https://user-images.githubusercontent.com/85559896/148971356-71e7683e-ed41-43bd-bef3-14771a2a8b5f.png)
+
+
 
 ## **Yet to be implemented**
 1. The addition of an edit user details.

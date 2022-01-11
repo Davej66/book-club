@@ -19,10 +19,11 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
-
+# Retrieves all books
 @app.route("/")
 @app.route("/get_tasks")
 def get_tasks():
+    # Retrieves all books
     tasks = list(mongo.db.tasks.find())
     return render_template("tasks.html", tasks=tasks) 
 

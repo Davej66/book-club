@@ -1,72 +1,71 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="col s12 m6 l7 center-align">
-       
-    <h2 class="header"><strong>{{ task.book_name }}</strong></h2>
+<div class = "col s12 m6 l7 center-align" >
 
-    
-    <div class="card horizontal container ">
-        <div class="card-image">
-            <img src="{{ task.book_cover }}" alt="{{ task.book_name }} book cover">
-        </div>
-        <div class="card-stacked panel-color">
-            <div class="card-content info-text">
-                <div class="">
+    <h2 class = "header" > <strong > {{task.book_name}} </strong > </h2 >
+
+    <div class = "card horizontal container " >
+        <div class = "card-image" >
+            <img src = "{{ task.book_cover }}" alt = "{{ task.book_name }} book cover" >
+        </div >
+        <div class = "card-stacked panel-color" >
+            <div class = "card-content info-text" >
+                <div class = "" >
                     {% if task.is_bseller == "on" %}
-                        <p><strong>Best Seller</strong></p>
-                        <input type="checkbox" id="is_bseller" name="is_bseller" checked> 
+                        <p > <strong > Best Seller </strong > </p >
+                        <input type = "checkbox" id = "is_bseller" name = "is_bseller" checked >
                     {% else %}
-                        <input type="checkbox" id="is_bseller" name="is_bseller">
+                        <input type = "checkbox" id = "is_bseller" name = "is_bseller" >
                     {% endif %}
-                </div>
-            
-                <p>Category: {{ task.category_name }}</p>
-                <p>Author: {{ task.book_author }}</p>
-                <p>Number of pages: {{ task.book_pages }}</p>
-                <p>ISBN: {{ task.book_isbn }}</p>
-            </div>
-        
-            <div class="card-action">
-                <a href="https://www.amazon.co.uk/s?k={{ task.book_isbn }}" target="_blank" class="red-text">Purchase a copy here</a>
-            </div>
-        </div>
-    </div>
-</div>
+                </div >
 
-<div class="descrpition-text">
-    <p>Description: {{ task.book_description }}</p>
-</div>
+                <p > Category: {{task.category_name}} </p >
+                <p > Author: {{task.book_author}} </p >
+                <p > Number of pages: {{task.book_pages}} </p >
+                <p > ISBN: {{task.book_isbn}} </p >
+            </div >
 
-<!--submit button-->
-<div class="row">
-    <div class=" center-align">
-        <!--cancel button-->
-        <a href="{{ url_for('get_tasks') }}" class="btn-large red text-shadow">
-            Back <i class="fas fa-times-circle right"></i>
-        </a>
-    </div>    
-</div>
+            <div class = "card-action" >
+                <a href = "https://www.amazon.co.uk/s?k={{ task.book_isbn }}" target = "_blank" class = "red-text" > Purchase a copy here </a >
+            </div >
+        </div >
+    </div >
+</div >
+
+<div class = "descrpition-text" >
+    <p > Description: {{task.book_description}} </p >
+</div >
+
+<!--submit button -->
+<div class = "row" >
+    <div class = " center-align" >
+        <!--cancel button -->
+        <a href = "{{ url_for('get_tasks') }}" class = "btn-large red text-shadow" >
+            Back <i class = "fas fa-times-circle right" > </i >
+        </a >
+    </div >
+</div >
 {% if session.user|lower == task.created_by|lower %}
-<h3 class="light-blue-text text-darken-4 center-align">Add Review</h3>
+<h3 class = "light-blue-text text-darken-4 center-align" > Add Review </h3 >
 
-<div class="row card-panel review-color">
-    <form class="col s12" method="POST" action="">
-        <!--book review-->
-        <div class="row  black-text review-color">
-            <div class="input-field col s12">
-                <i class="fas fa-pencil-alt prefix"></i>
-                <input id="book_review" name="book_review" minlength="2" maxlength="500" type="text" class="validate"
-                    required>
-                <label for="book_review" class="black-text">Write review here </label>
-            </div>
-        </div>
-        <!--submit button-->
-        <div class="row">
-            <div class="col-12 center-align">
-                 <!--cancel button-->
-                 <a href="{{ url_for('get_tasks') }}" class="btn-large red text-shadow">
-                    Cancel <i class="fas fa-times-circle right"></i>
+<div class = "row card-panel review-color" >
+    <form class = "col s12" method = "POST" action = "" >
+        <!--book review -->
+        <div class = "row  black-text review-color" >
+            <div class = "input-field col s12" >
+                <i class = "fas fa-pencil-alt prefix" > </i >
+                <input id = "book_review" name = "book_review" minlength = "2" maxlength = "500" type = "text" class = "validate"
+                    required >
+                <label for = "book_review" class = "black-text" > Write review here </label >
+            </div >
+        </div >
+        <!--submit button -->
+        <div class = "row" >
+            <div class = "col-12 center-align" >
+                 <!--cancel button -->
+                 <a href = "{{ url_for('get_tasks') }}" class = "btn-large red text-shadow" >
+                    Cancel <i class = "fas fa-times-circle right" > </i >
                 </a>
                 <button type="submit" class="btn-large light-blue darken-1 text-shadow">
                     Add Review <i class="fas fa-plus-square right"></i>

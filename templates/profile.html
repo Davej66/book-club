@@ -2,84 +2,82 @@
 {% block content %}
 
 
-<div class="row">
-    <fdiv class="col s12 m8 offset-m2">
-        <div class="card-panel blue lighten-4">
-            <h3 class="center-align black-text">
-                {{ username }}'s Profile
-            </h3>
-            <div class="card-action center">
-                <a href="#"
-                    class="btn-small green accent-4">Delete</a>
-                <a href="#"
-                    class="btn-small light-blue lighten-1">Edit</a>
-            </div>
-        </div>
-</div>
-</div>
+<div class = "row" >
+    <fdiv class = "col s12 m8 offset-m2" >
+        <div class = "card-panel blue lighten-4" >
+            <h3 class = "center-align black-text" >
+                {{username}}'s Profile
+            </h3 >
+            <div class = "card-action center" >
+                <a href = "#"
+                    class = "btn-small green accent-4" > Delete </a >
+                <a href = "#"
+                    class = "btn-small light-blue lighten-1" > Edit </a >
+            </div >
+            </div >
+</div >
+</div >
 
 {% if tasks|length > 0 %}
-<ul class="row">
-    
-    <li>
-        <div class="row ">
-            <div class="row">
-                <div class="row">
+<ul class = "row" >
+
+    <li >
+        <div class = "row " >
+            <div class = "row" >
+                <div class = "row" >
                     {% for task in tasks %}
                     {% if session.user|lower == task.created_by|lower or session.user|lower == "admin"|lower %}
-                    <div class="col s12 m3">
-                        <div class="card large light-blue darken-4 text-shadow center-align">
-                            <div class="card-image">
-                                <img src="{{ task.book_cover }}" alt="{{ task.book_name }} book cover">
-                            </div>
-                            <div class="card-content white-text">
-                                <span class="card-title title-text">{{ task.book_name }}
+                    <div class = "col s12 m3" >
+                        <div class = "card large light-blue darken-4 text-shadow center-align" >
+                            <div class = "card-image" >
+                                <img src = "{{ task.book_cover }}" alt = "{{ task.book_name }} book cover" >
+                            </div >
+                            <div class = "card-content white-text" >
+                                <span class = "card-title title-text" > {{task.book_name}}
                                 {% if task.is_bseller == "on" %}
-                                <i class="fas fa-exclamation-circle light-blue-text text-lighten-2 tooltipped"
-                                    data-position="right" data-tooltip="Bestseller!"></i>
+                                <i class = "fas fa-exclamation-circle light-blue-text text-lighten-2 tooltipped"
+                                    data - position = "right" data - tooltip = "Bestseller!" > </i >
                                 {% endif %}
-                                </span>
-                            </div>
-                            <div class="card-action">
+                                </span >
+                            </div >
+                            <div class = "card-action" >
                                 {% if session.user|lower == task.created_by|lower or session.user|lower == "admin"|lower %}
-                                <a href="{{ url_for('delete_task', task_id=task._id) }}"
-                                    class="btn-small green accent-4">Delete</a>
-                                <a href="{{ url_for('edit_task', task_id=task._id) }}"
-                                    class="btn-small light-blue lighten-1">Edit</a>
+                                <a href = "{{ url_for('delete_task', task_id=task._id) }}"
+                                    class = "btn-small green accent-4" > Delete </a >
+                                <a href = "{{ url_for('edit_task', task_id=task._id) }}"
+                                    class = "btn-small light-blue lighten-1" > Edit </a >
                                 {% endif %}
-                                <a href="{{ url_for('get_book', task_id=task._id) }}"
-                                    class="btn-small light-yellow lighten-1">More</a>
-                            </div>        
-                        </div>
-                    </div>
+                                <a href = "{{ url_for('get_book', task_id=task._id) }}"
+                                    class = "btn-small light-yellow lighten-1" > More </a >
+                            </div >
+                        </div >
+                    </div >
                     {% endif %}
                     {% endfor %}
-                </div>
-            </div>      
-        </div>
-    </li>
+                </div >
+            </div >
+        </div >
+    </li >
 
-    
 
-  
-</ul>
+</ul >
 {% if reviews|length > 0 %}
         {% for review in reviews %}
         {% if session.user|lower == review.reviewed_by|lower %}
-            <div>
-                <div class="col s12 m8 offset-m2 l6 offset-l3">
-                    <div class="card-panel blue lighten-4 z-depth-1">
-                      <div class="row valign-wrapper">
-                        <div class="col s2">
-                          <img src="{{ review.user_avatar }}" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
-                        </div>
-                        <div class="col s12">
-                          <span class="blue lighten-4">
-                            <p><strong>Reviewed by : {{ review.reviewed_by }}~ </strong> {{ review.book_review }}. Added on {{ review.created_on }}</p>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
+            <div >
+                <div class = "col s12 m8 offset-m2 l6 offset-l3" >
+                    <div class = "card-panel blue lighten-4 z-depth-1" >
+                      <div class = "row valign-wrapper" >
+                        <div class = "col s2" >
+                          <img src = "{{ review.user_avatar }}" alt = "" class = "circle responsive-img" > <!-- notice the "circle" class -->
+                        </div >
+                        <div class = "col s12" >
+                          <span class = "blue lighten-4" >
+                            <p > <strong > Reviewed by: {{review.reviewed_by}}~ < /strong > {{review.book_review}}. Added on {{review.created_on}} </p >
+                          </span >
+                        </div >
+                      </div >
+                    </div >
                   </div>
                 <div>
             </div>

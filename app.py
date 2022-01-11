@@ -230,7 +230,7 @@ def get_book(task_id):
     return render_template("get_book.html", task=task, categories=categories, reviews=reviews)
 
 
- # The custome 404 page has been learned from my mentor "Richard Wills"
+ # The 404 page 
 @app.errorhandler(404)
 def page_not_found(e):
     """
@@ -238,6 +238,14 @@ def page_not_found(e):
     """
     return render_template('404.html'), 404
 
+
+# The 404 page 
+@app.errorhandler(500)
+def internal_error(err):
+    """
+    On 500 error passes user to custom 500 page
+    """
+    return render_template('500.html'), 500
        
 
 if __name__ == "__main__":

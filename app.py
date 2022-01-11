@@ -227,7 +227,18 @@ def get_book(task_id):
         mongo.db.reviews.insert_one(review_details)
         flash("Category Successfully Updated")
     
-    return render_template("get_book.html", task=task, categories=categories, reviews=reviews)    
+    return render_template("get_book.html", task=task, categories=categories, reviews=reviews)
+
+
+ # The custome 404 page has been learned from my mentor "Richard Wills"
+@app.errorhandler(404)
+def page_not_found(e):
+    """
+    On 404 error passes user to custom 404 page
+    """
+    return render_template('404.html'), 404
+
+       
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),

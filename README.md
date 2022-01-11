@@ -25,9 +25,17 @@ All pages on this website are responsive to desktop, iPad and, mobile screens. E
 ## **Existing Features**
 
 
+## - Home Page
+![image](https://user-images.githubusercontent.com/85559896/148966051-24dd836a-8d18-495d-8ad4-d89a7bfbb7ad.png)
+
+- Features
+- A search box in which users can search for their favorite books by title, author or category.
+- Small book cards with image, title, and author name, which on click navigates users to a page with full information of each book.
 
 ## **Yet to be implemented**
-
+1. The addition of an edit user details.
+2. The ability to recover access if password forgotten
+3. The option to add a user photo or avatar - mongo database restricts storage of large files.
 
 notes below for use later to be added in a neat format
 Code

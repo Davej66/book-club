@@ -5,36 +5,41 @@
 
     <h2 class = "header" > <strong > {{task.book_name}} </strong > </h2 >
 
+    <div class="col s12">    
     <div class = "card horizontal container " >
         <div class = "card-image" >
-            <img src = "{{ task.book_cover }}" alt = "{{ task.book_name }} book cover" >
+            <div class="hide-on-small-only">
+                <img src = "{{ task.book_cover }}" alt = "{{ task.book_name }} book cover" >
+            </div>
         </div >
-        <div class = "card-stacked panel-color" >
-            <div class = "card-content info-text" >
+        <div class = "col s8 card-stacked panel-color" >
+            <div class = "card-content info-text center-align " >
                 <div class = "" >
                     {% if task.is_bseller == "on" %}
                         <p > <strong > Best Seller </strong > </p >
-                        <input type = "checkbox" id = "is_bseller" name = "is_bseller" checked >
+                        <input type = "checkbox" id = "is_bseller" name = "is_bseller" checked ><br>
                     {% else %}
                         <input type = "checkbox" id = "is_bseller" name = "is_bseller" >
                     {% endif %}
                 </div >
 
-                <p > Category: {{task.category_name}} </p >
-                <p > Author: {{task.book_author}} </p >
-                <p > Number of pages: {{task.book_pages}} </p >
-                <p > ISBN: {{task.book_isbn}} </p >
+                <p > Category: {{task.category_name}} </p ><br>
+                <p > Author: {{task.book_author}} </p ><br>
+                <p > Number of pages: {{task.book_pages}} </p ><br>
+                <p > ISBN: {{task.book_isbn}} </p ><br>
             </div >
 
             <div class = "card-action" >
-                <a href = "https://www.amazon.co.uk/s?k={{ task.book_isbn }}" target = "_blank" class = "red-text" > Purchase a copy here </a >
+                <a href = "https://www.amazon.co.uk/s?k={{ task.book_isbn }}" target = "_blank" class = "red-text" > 
+                    <strong>Purchase a copy here </strong></a >
             </div >
         </div >
     </div >
 </div >
 
-<div class = "descrpition-text" >
-    <p > Description: {{task.book_description}} </p >
+<div class = "descrpition-text center-align" >
+    <h3>About {{task.book_name}}</h3>
+    <p > {{task.book_description}} </p >
 </div >
 
 <!--submit button -->

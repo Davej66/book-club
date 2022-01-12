@@ -40,8 +40,8 @@ body {
 /*.card.large .card-image > img{
     align-content: center;
     height: 280px;
-    /*max-width: 240px;*/
-}*/
+    /*max-width: 240px;
+} */
 
 
 
@@ -137,5 +137,11 @@ footer.page-footer{
         font-size: 0.5vw;
     }
 
+    .horizontal > img{
+        max-height: 23.43rem;
+        max-width: 10.5rem;
+        min-height: 23.43rem;
+        min-width: 10.5rem;
+    }
 
 }

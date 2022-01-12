@@ -1,125 +1,125 @@
-<!DOCTYPE html >
-<html lang = "en" >
+<!DOCTYPE html>
+<html lang="en">
 
-<head >
-    <meta charset = "UTF-8" >
+<head>
+  <meta charset = "UTF-8" >
     <meta http - equiv = "X-UA-Compatible" content = "IE=edge" >
     <meta name = "description" content = "Book Club" >
     <meta name = "keywords" content = "books, reading, bestsellers" >
     <meta name = "author" content = "David Jacobs" >
     <meta name = "viewport" content = "width=device-width, initial-scale=1.0" >
-    <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"
-       integrity = "sha512-xA6Hp6oezhjd6LiLZynuukm80f8BoZ3OpcEYaqKoCV3HKQDrYjDE1Gu8ocxgxoXmwmSzM4iqPvCsOkQNiu41GA=="
-        crossorigin = "anonymous" referrerpolicy = "no-referrer" type = "text/css" / >
-    <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-        type = "text/css" >
-    <link rel = "stylesheet" href = "{{ url_for('static', filename='css/style.css') }}" type = "text/css" >
-    {% block styles %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"
+    integrity="sha512-xA6Hp6oezhjd6LiLZynuukm80f8BoZ3OpcEYaqKoCV3HKQDrYjDE1Gu8ocxgxoXmwmSzM4iqPvCsOkQNiu41GA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    type="text/css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
+  {% block styles %}
+  {% endblock %}
+  <title>Book Club</title>
+</head>
+
+<body>
+  <header>
+    
+    <!-- top navbar -->
+    <nav class="nav-extended text-shadow light-blue">
+      <div class="nav-wrapper">
+        <a href="{{ url_for('get_tasks') }}" class="brand-logo" style = "position:relative; left:80px; top:2px; ">  Book Club</a>
+
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="{{ url_for('get_tasks') }}">Home</a></li>
+          {% if session.user %}
+          <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
+          <li><a href="{{ url_for('add_task') }}">New Book</a></li>
+          {% if session.user|lower == "admin"|lower %}
+          <li><a href="{{ url_for('get_categories') }}">Manage Categories</a></li>
+          {% endif %}
+          <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+          {% else %}
+          <li><a href="{{ url_for('login') }}">Log In</a></li>
+          <li><a href="{{ url_for('register') }}">Register</a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+    
+
+    <!-- mobile sidenav -->
+    <ul class="sidenav" id="mobile-demo">
+      <li>
+        <h4 class="center-align light-blue-text text-darken 4">Book Club</h4>
+      </li>
+      <li><a href="{{ url_for('get_tasks') }}">Home</a></li>
+      {% if session.user %}
+      <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
+      <li><a href="{{ url_for('add_task') }}">New Task</a></li>
+      {% if session.user|lower == "admin"|lower %}
+      <li><a href="{{ url_for('get_categories') }}">Manage Categories</a></li>
+      {% endif %}
+      <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+      {% else %}
+      <li><a href="{{ url_for('login') }}">Log In</a></li>
+      <li><a href="{{ url_for('register') }}">Register</a></li>
+      {% endif %}
+    </ul>
+  </header>
+
+  <section>
+    <!--Flash messages-->
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="row flashes">
+      <h4 class="light-blue lighten-4 center-align">{{ message }}</h4>
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+  </section>
+
+  <main class="container">
+    {% block content %}
+    
     {% endblock %}
-    <title > Book Club </title >
-</head >
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Go to Top</button>
+  </main>
 
-<body >
-   <header >
-
-       <!-- top navbar -->
-        <nav class = "nav-extended light-blue" >
-            <div class = "nav-wrapper" >
-                <a href = "{{ url_for('get_tasks') }}" class = "brand-logo  black-text" style = "position:relative; left:80px; top:2px; " > Book Club </a >
-
-                <a href = "#" data - target = "mobile-demo" class = "sidenav-trigger right" > <i class = "fas fa-bars" > </i > </a >
-                <ul class = "right hide-on-med-and-down" >
-                    <li > <a href = "{{ url_for('get_tasks') }}" class = "black-text" > Home </a > </li >
-                    {% if session.user %}
-                    <li > <a href = "{{ url_for('profile', username=session['user']) }}" class = "black-text" > Profile </a > </li >
-                    <li > <a href = "{{ url_for('add_task') }}" class = "black-text" > New Book </a > </li >
-                    {% if session.user|lower == "admin"|lower %}
-                    <li > <a href = "{{ url_for('get_categories') }}" class = "black-text" > Manage Categories </a > </li >
-                    {% endif %}
-                    <li > <a href = "{{ url_for('logout') }}" class = "black-text" > Log Out </a > </li >
-                    {% else %}
-                    <li > <a href = "{{ url_for('login') }}" class = "black-text" > Log In </a > </li >
-                    <li > <a href = "{{ url_for('register') }}" class = "black-text" > Register </a > </li >
-                    {% endif %}
-                </ul >
-            </div >
-        </nav >
-
-        <!-- mobile sidenav -->
-        <ul class = "sidenav" id = "mobile-demo" >
-           <li >
-                <h3 class = "center-align black-text" > Book Club </h3 >
-            </li >
-            <li > <a href="{{ url_for('get_tasks') }}">Home</a></li>
-            {% if session.user %}
-            <li > <a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
-            <li > <a href="{{ url_for('add_task') }}">New Task</a></li>
-            {% if session.user|lower == "admin"|lower %}
-            <li > <a href="{{ url_for('get_categories') }}">Manage Categories</a></li>
-            {% endif %}
-            <li > <a href="{{ url_for('logout') }}">Log Out</a></li>
-            {% else %}
-            <li > <a href="{{ url_for('login') }}">Log In</a></li>
-            <li > <a href="{{ url_for('register') }}">Register</a></li>
-            {% endif %}
-        </ul >
-    </header >
-
-    <section >
-      <!--Flash messages-->
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-        {% for message in messages %}
-        <div class = "row flashes">
-            <h4 class = "black-text lighten-4 center-align">{{ message }}</h4>
-        </div >
-        {% endfor %}
-        {% endif %}
-        {% endwith %}
-    </section >
-
-    <main class = "container">
-        {% block content %}
-
-        {% endblock %}
-        <button onclick = "topFunction()" id="myBtn" title="Go to top">Top</button>
-    </main >
-
-    <footer class = "page-footer">
-        <div class = "container">
-            <div class = "row">
-                <div class = "col s6">
-                    <h4 class = "white-text">About</h4>
-                    <p class = "grey-text text-lighten-4">Book club was created by David Jacobs.<br>
-                      The hope is to bring book lovers a resource to discover and share their book experiences, good and
-                       bad on this website. In doing so providing a source for all on what may be their next book to read.
-                    </p >
-                </div >
-                <div class = "col s3 offset-s3">
-                    <h5 class = "white-text">Links</h5>
-                    <ul >
-
-                    </ul >
-                </div >
-            </div >
-        </div >
-        <div class = "footer-copyright">
-            <div class = "container center">
-                <!-- the dynamic copyright year is learned form (https: //stackoverflow.com/questions/43714006/how-can-one-create-a-dynamic-copyright-date-without-document-write-in-javascri) -->
-                <p >Copyright &copy
-                <span id ="year"> </span> Book Club All Rights Reserved</p>
-            </div >
-        </div >
-</footer >
+  <footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col s6">
+                <h3 class="white-text">About</h3>
+                <p class="grey-text text-lighten-4">Book club was created by David Jacobs.<br>
+                    The hope is bring book lovers a resource to discover and share their book experience, good and
+                    on this website.
+                </p>
+            </div>
+            <div class="col s3 offset-s3">
+                <h3 class="white-text">Links</h3>
+                <ul>
+                   
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container center">
+            <!-- the dynamic copyright year is learned form (https://stackoverflow.com/questions/43714006/how-can-one-create-a-dynamic-copyright-date-without-document-write-in-javascri) -->
+            <p>Copyright &copy; <span id="year"> </span> Book Club All Rights Reserved</p>
+        </div>
+    </div>
+</footer>
 
 
 
-    <script src = "https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity = "sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src = "{{ url_for('static', filename='js/script.js') }}"></script>
-    {% block scripts %}
-    {% endblock %}
-</body >
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  {% block scripts %}
+  {% endblock %}
+</body>
 
-</html >
+</html>

@@ -208,7 +208,7 @@ To achieve this by the following process;
 1. Under the repository name and the menu that contains Gitpod click Code.
 2. Select HTTPS the location will already be present.
 3. To the right of this address is an icon once this clicked the location will be cloned.
-4. the clone can be found at this [https://github.com/Davej66/m2-travelseeker.git](https://github.com/Davej66/m2-travelseeker.git).
+4. the clone can be found at this [https://github.com/Davej66/book-club](https://github.com/Davej66/book-club).
 
 ## Credits
 

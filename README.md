@@ -177,10 +177,14 @@ I also used the following to fine tune the process;
    - This has errors caused withe intoduction of jinja to the code. [W3C HTML Validation](https://validator.w3.org/).
  * W3C CSS validator tool for CSS
    - No issues were found with this [W3C CSS Validation](https://jigsaw.w3.org/css-validator/#validate_by_input).
+ * PEP8 online for Python
+   - No issues were found with this [PEP8 Python Validation](http://pep8online.com/). 
+ 
  * JSHint (JSHint developer tools) a tool that detects errors and potential problems in JavaScript code.
    - No issues were found with this
  * Lighthouse (chrome developer tools) for security and load times.
    - An issue with the images used from the amazon website, but mongo does not allow large files to be stored which would be incurred with images being stored in the database.       [Chrome Dev Tools (incl Lighthouse)](https://developer.chrome.com/docs/devtools/).
+
 
 ### Bugs and Solutions
 #### python method update()

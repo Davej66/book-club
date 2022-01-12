@@ -98,12 +98,13 @@ All pages on this website are responsive to desktop, iPad and, mobile screens. E
  * [HTML](https://en.wikipedia.org/wiki/HTML)
  * [CSS](https://en.wikipedia.org/wiki/CSS)
  * [JavaScript](https://en.wikipedia.org/wiki/JavaScript)
+ * [Python](https://en.wikipedia.org/wiki/Python_(programming_language)
 
- ### Libraries
- * [Bootstrap](https://getbootstrap.com/docs/4.5/getting-started/introduction/)
- * [Google fonts](https://fonts.google.com/)
- * [Fontawesome](https://fontawesome.com/)
- * [Google API - maps and places](https://developers.google.com/maps/documentation/places/web-service/overview)
+ ### Libraries,Framework & Template-maker
+ * [Fontawesome](https://fontawesome.com/) 
+ * [Materialize](https://materializecss.com/)
+ * [Flask](https://en.wikipedia.org/wiki/Flask_(web_framework))
+ * [Jinja](https://en.wikipedia.org/wiki/Jinja_(template_engine))
   
  ### Tools
  * [GitHub](https://github.com/)
@@ -111,7 +112,6 @@ All pages on this website are responsive to desktop, iPad and, mobile screens. E
  * [Balsamic](https://gitpod.io/)
  * [W3C HTML Validation](https://validator.w3.org/)
  * [W3C CSS Validation](https://jigsaw.w3.org/css-validator/#validate_by_input)
- * [TinyPNG](https://tinypng.com/)
  * [Coolors](https://coolors.co/)
  * [Chrome Dev Tools (incl Lighthouse)](https://developer.chrome.com/docs/devtools/)
  * [Unicorn Revealer (extension on Chrome Development Tools)](https://chrome.google.com/webstore/detail/unicorn-revealer/lmlkphhdlngaicolpmaakfmhplagoaln?hl=en-GB)
@@ -129,34 +129,25 @@ I also was able to ask family to review the website on their devices for their o
 ### Validator Testing
 I also used the following to fine tune the process;
  * W3C Markup validator tool for HTML.
-  - No issues were found with this [W3C HTML Validation](https://validator.w3.org/).
+  - This  [W3C HTML Validation](https://validator.w3.org/).
  * W3C CSS validator tool for CSS
   - No issues were found with this [W3C CSS Validation](https://jigsaw.w3.org/css-validator/#validate_by_input).
  * JSHint (JSHint developer tools) a tool that detects errors and potential problems in JavaScript code.
   - No issues were found with this
  * Lighthouse (chrome developer tools) for security and load times.
-  - An issue with the images used from the amazon website. [Chrome Dev Tools (incl Lighthouse)](https://developer.chrome.com/docs/devtools/).
+  - An issue with the images used from the amazon website, but mongo does not allow large file to be stored which would be incuured with images being stored in the database. [Chrome Dev Tools (incl Lighthouse)](https://developer.chrome.com/docs/devtools/).
 
 ### Bugs and Solutions
 #### python method update()
 - *Error* - When using the update() method the Werkzeug error was triggered and the error collection is not callable.
-- *Fix* - With the guidance of Richard my mentor on how to analysis the error messages we were able to asstain that the version of python used had depreciated the update()                 method and replace() was required method.
-- *Verdict* - When a boo is edited the data is now passed to the database correctly.
+- *Fix* - With the guidance of Richard my mentor on how to analysis the error messages we were able to asstain that the version of python used had depreciated the update()                 method and replace_one() was required method.
+- *Verdict* - When a book is edited the data is now passed to the database correctly.
 
-#### Google Map - viewed on mobile devices
-- *Bug* - When the website is viewed on mobile devices google maps is not reponsive. The embed map using iframe returns a "X-Frame-Options' to 'sameorigin'", 
-          using comments in stackoverflow there were solutions that required server access or more advanced javascipt/php solutions.
-- *Fix* - When reviewing the code and referring to the course and w3schools I used the @media to revise the google map width.
-- *Verdict* - The google map is now reponsive in mobile devices.
+#### python method delete()
+- *Error* - When using the delete() method the Werkzeug error was triggered and the error collection is not callable.
+- *Fix* - With the guidance of Richard my mentor with the previous error above I was able to asstain that the version of python used had depreciated the remove()                 method and delete_one() was required method.
+- *Verdict* - When a book is deleted the data is now removed from the database correctly.
 
-#### Google Map - standard map markers.
-
-
-#### Google Map - csp issue.
-
-- *Bug* -The standard map returne after the search also contains markers for businesses and points of interests which could cause the user confusion..
-- *Unresolved* - Researching google documentation and other users experience with this and their solutions. 
-- *Verdict* -  Continuing to research the possible solution, for this project and future projects implement google API's and depolying them in a website.
 
 ## Deployment
 
@@ -181,22 +172,16 @@ To achieve this by the following process;
 I have used the following 5 websites to gather inspiration for content.
 
 - https://www.librarything.com/home Book review site
-- https://www.w3schools.com/  [The up buuton](https://www.w3schools.com/howto/howto_js_scroll_to_top.asp)
-- https://materializecss.com/ additional features not covered in the course.
+- https://www.w3schools.com/  The up button [the link here to thread to develop this.](https://www.w3schools.com/howto/howto_js_scroll_to_top.asp)
+- https://materializecss.com/ Additional features not covered in the course.
 - https://www.amazon.co.uk/ Image links were used from this website
 
 
 
 ## Acknowledgements
 
-Thanking my mentor [Richard Wells](https://github.com/D0nni387/) for his invaluable guidance and continuing support. His input during the mid-review, furthermore at the final review helped me to get project.
+Thanking my mentor [Richard Wells](https://github.com/D0nni387/) for his invaluable guidance and continuing support. His input during the mid-review, furthermore at the final review helped me with the project.
 
 Support from the slack community when seeking assistance for the wealth of infomation available.
 
 
-notes below for use later to be added in a neat format
-Code
-
-the up button was found here https://www.w3schools.com/howto/howto_js_scroll_to_top.asp
-
-Problems encountered whendeveloping the site, when using the gitpod environment the update & delete methods were no longer recognised. This was resolved with guidance from mu mentor Richard Wells on analysising the error meesage and identifying tyhat the more recent Python version I was using had depreciated those methods.

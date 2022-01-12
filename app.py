@@ -101,7 +101,7 @@ def profile(username):
 
     if session["user"]:
         return render_template("profile.html", username=username, 
-            books=books, reviews=reviews)
+            gbooks=books, reviews=reviews)
 
     return redirect(url_for("login"))
 

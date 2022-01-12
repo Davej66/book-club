@@ -159,6 +159,8 @@ The choice of colurs evolved during development.
  * [Chrome Dev Tools (incl Lighthouse)](https://developer.chrome.com/docs/devtools/)
  * [Unicorn Revealer (extension on Chrome Development Tools)](https://chrome.google.com/webstore/detail/unicorn-revealer/lmlkphhdlngaicolpmaakfmhplagoaln?hl=en-GB)
  * [JSHint](https://jshint.com/)
+ * [MongoDb](https://en.wikipedia.org/wiki/MongoDB)
+ * [Heroku](https://en.wikipedia.org/wiki/Heroku)
 
 
 ## Testing
@@ -203,12 +205,34 @@ The project after the completed code has been committed and pushed to GitHub can
 5. You can now save these selections and the link to the deployed website will be displayed.
 6. The website is live https://davej66.github.io/m2-travelseeker/ .
 
-### To run the project locally:
+### To run the project locally github:
 To achieve this by the following process;
 1. Under the repository name and the menu that contains Gitpod click Code.
 2. Select HTTPS the location will already be present.
 3. To the right of this address is an icon once this clicked the location will be cloned.
 4. the clone can be found at this [https://github.com/Davej66/book-club](https://github.com/Davej66/book-club).
+
+### To run the project locally heroku:
+To achieve this by the following process;
+1. Create a requirements.txt file using the terminal command pip freeze > requirements.txt.
+2. Create a Procfile with the terminal command echo web: python app.py > Procfile.
+3. git add and git commit the new requirements and Procfile and then git push the project to GitHub.
+4. Create a new app on the Heroku website by clicking the "New" button in your dashboard. Give it a name and set the region to Europe.
+5.	From the heroku dashboard of your newly created application, click on "Deploy" > "Deployment method" and select GitHub.
+6.	Confirm the linking of the heroku app to the correct GitHub repository.
+7.	In the heroku dashboard for the application, click on "Settings" > "Reveal Config Vars".
+8.	Set the following config vars:
+      Key	            Value
+      IP	            0.0.0.0
+      MONGO_URI	     mongodb+srv://:@<cluster_name>-qtxun.mongodb.net/<database_name>?retryWrites=true&w=majority
+      PORT	          8000
+      SECRET_KEY	    <your_secret_key>
+
+9.	In the heroku dashboard, click "Deploy".
+10.	In the "Manual Deployment" section of this page, made sure the master branch is selected and then click "Deploy Branch".
+11.	The site is now successfully deployed.
+
+
 
 ## Credits
 

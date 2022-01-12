@@ -25,61 +25,104 @@ All pages on this website are responsive to desktop, iPad and, mobile screens. E
 ## **Existing Features**
 
 ## - Colour Scheme
+
+-o	The font families used in this project are: 
 ![image](https://user-images.githubusercontent.com/85559896/149192821-a2f27098-c616-4129-bc3b-253c2108b110.png)
 
-
-
-
+The choice of colurs evolved during development.
 
 ## - NAV Bar
+### - Features
+- Menu options available to none members.
+
 ![image](https://user-images.githubusercontent.com/85559896/148970586-7ac7e92b-0a29-4b0b-8b14-578906ab9faf.png)
 
+ - Menu options available to members.
+ 
 ![image](https://user-images.githubusercontent.com/85559896/148969815-88f50e85-1dbd-42f5-9492-84f229f046f8.png)
+
+- Menu options aviable to admin members.
 
 ![image](https://user-images.githubusercontent.com/85559896/148970767-6bde8491-c9b2-41cd-bb9e-dd8ed387b34f.png)
 
 
-- Features
-- A search box in which users can search for their favorite books by title, author or category.
-- Small book cards with image, title, and author name, which on click navi
 
 ## - Home Page
-![image](https://user-images.githubusercontent.com/85559896/148966051-24dd836a-8d18-495d-8ad4-d89a7bfbb7ad.png)
-
-- Features
+### - Features
 - A search box in which users can search for their favorite books by title, author or category.
 - Small book cards with image, title, and author name, which on click navigates users to a page with full information of each book.
+- When aa member is logged in the edit and delete buttons are available.
 
-
-
+![image](https://user-images.githubusercontent.com/85559896/148966051-24dd836a-8d18-495d-8ad4-d89a7bfbb7ad.png)
 
 
 ## - Profile Page
+### - Features
+
+- Book cards with image, bestseller(if selected at adding or editing), category, title, author name, page number and ISBN numbers and purchase link.
+- Book description.
+- Back button to return to home page.
+- If logged in the option to leave a review if not a message suggesting you register.
+- Lists any reviews already posted for this book.
+
 ![image](https://user-images.githubusercontent.com/85559896/149187911-b065f477-47f0-403f-96ed-b7206d21dd3a.png)
 
-
-
 ## - Edit Book Page
+### - Features
+
+- Book cards with image, bestseller(if selected at adding or editing), title, author name, page number and ISBN numbers and purchase link.
+- Edit button sends any amended data to the database, and a message of an updated book.
+- Cancel button to return to home page.
+
 ![image](https://user-images.githubusercontent.com/85559896/149187496-43797ef4-8b8f-4e27-960f-8408e04557fc.png)
 
-
 ## - Add Book Page
+### - Features
+
+- Book cards with image, bestseller(if selected at adding or editing), title, author name, page number and ISBN numbers and purchase link.
+- Edit button sends any amended data to the database, and a message of an updated book.
+- Cancel button to return to home page.
+
 
 ![image](https://user-images.githubusercontent.com/85559896/148971715-02aec2d6-a8e4-4097-95f7-a78e67575f3b.png)
 
-
-
 ## - Manage Category Page
-![image](https://user-images.githubusercontent.com/85559896/148972262-ffde7d29-a86c-4cff-9b7f-cabf5f943171.png)
+### - Features
+
+- Book card category field.
+- Edit button sends any you to the category edit page.
+- Cancel button to return to home page.
+
+![image](https://user-images.githubusercontent.com/85559896/149223672-065d70ce-5763-4c52-9879-5885f841ddbc.png)
 
 ## - Edit Category Page
+### - Features
+
+- Book card category input field.
+- Edit button sends the new category data to the database.
+- Cancel button to return to home page.
+
 ![image](https://user-images.githubusercontent.com/85559896/148972538-a9accd4a-b83a-4a4c-a517-9e29335f38cf.png)
 
-
-
 ## - Login Page
+### - Features
+
+- Book card username input field.
+- Book card password input field.
+- Login button to access member data.
+ 
 ![image](https://user-images.githubusercontent.com/85559896/148971976-d390187b-d97f-4184-87c5-9655b59840b3.png)
 
+## - Registration Page
+### - Features
+
+- Book card username input field.
+- Book card email input field.
+- Book card admin access request field.
+- Book card password input field.
+- Register button to register on a website.
+ 
+![image](https://user-images.githubusercontent.com/85559896/149223522-c83488bd-e279-400e-ae6d-0f3a0629a5eb.png)
 
 
 
@@ -88,25 +131,25 @@ All pages on this website are responsive to desktop, iPad and, mobile screens. E
 1. The addition of an edit user details.
 2. The ability to recover access if password forgotten
 3. The option to add a user photo or avatar - mongo database restricts storage of large files.
+4. To introduce coding to allow a two level membership, member and admin. Currently the new user can request admin rights but only one admin is currently 
+   supported by the coding.
 
 
 # **Techologies Used**
 
-## **Languages**
-
-### Languages
+### **Languages**
  * [HTML](https://en.wikipedia.org/wiki/HTML)
  * [CSS](https://en.wikipedia.org/wiki/CSS)
  * [JavaScript](https://en.wikipedia.org/wiki/JavaScript)
- * [Python](https://en.wikipedia.org/wiki/Python_(programming_language)
+ * [Python](https://en.wikipedia.org/wiki/Python_(programming_language))
 
- ### Libraries,Framework & Template-maker
+ ### **Libraries & Framework**
  * [Fontawesome](https://fontawesome.com/) 
  * [Materialize](https://materializecss.com/)
  * [Flask](https://en.wikipedia.org/wiki/Flask_(web_framework))
- * [Jinja](https://en.wikipedia.org/wiki/Jinja_(template_engine))
-  
- ### Tools
+ * [JQuery](https://en.wikipedia.org/wiki/JQuery)
+ 
+ ### **Tools**
  * [GitHub](https://github.com/)
  * [GitPod](https://gitpod.io/)
  * [Balsamic](https://gitpod.io/)
@@ -129,13 +172,13 @@ I also was able to ask family to review the website on their devices for their o
 ### Validator Testing
 I also used the following to fine tune the process;
  * W3C Markup validator tool for HTML.
-  - This  [W3C HTML Validation](https://validator.w3.org/).
+   - This has errors caused withe intoduction of jinja to the code. [W3C HTML Validation](https://validator.w3.org/).
  * W3C CSS validator tool for CSS
-  - No issues were found with this [W3C CSS Validation](https://jigsaw.w3.org/css-validator/#validate_by_input).
+   - No issues were found with this [W3C CSS Validation](https://jigsaw.w3.org/css-validator/#validate_by_input).
  * JSHint (JSHint developer tools) a tool that detects errors and potential problems in JavaScript code.
-  - No issues were found with this
+   - No issues were found with this
  * Lighthouse (chrome developer tools) for security and load times.
-  - An issue with the images used from the amazon website, but mongo does not allow large file to be stored which would be incuured with images being stored in the database. [Chrome Dev Tools (incl Lighthouse)](https://developer.chrome.com/docs/devtools/).
+   - An issue with the images used from the amazon website, but mongo does not allow large files to be stored which would be incurred with images being stored in the database.       [Chrome Dev Tools (incl Lighthouse)](https://developer.chrome.com/docs/devtools/).
 
 ### Bugs and Solutions
 #### python method update()

@@ -12,7 +12,7 @@
                 <label for = "query" class = "black-text" > Search Books by Author, Category & Title </label >
             </div>
             <div class = "col s12 m4" >
-                <a href = "{{ url_for('get_tasks') }}" class = "red btn black-text" > Reset </a >
+                <a href = "{{ url_for('get_books') }}" class = "red btn black-text" > Reset </a >
                 <button type = "submit" class = "light-blue darken-1 btn black-text" >
                     <i class = "fas fa-search left" > </i > Search
                 </button >
@@ -21,34 +21,31 @@
     </form>
 </div>
 
-{% if tasks|length > 0 %}
+{% if books|length > 0 %}
 <ul class = "row container-fluid" >
 
    <li >
         <div class = "row" >
-            {% for task in tasks %}
+            {% for book in books %}
                     <div class = "col m3" >
                         <div class = "card large light-blue darken-4 center-align" >
                             <div class = "card-image center-align valign-wrapper" >
-                                <img height="auto" src = "{{ task.book_cover }}" alt = "{{ task.book_name }} book cover" >
+                                <img height="auto" src = "{{ book.book_cover }}" alt = "{{ book.book_name }} book cover" >
                             </div>
                             <div class = "card-content white-text valign center" >
-                                <span class = "card-title" > {{task.book_name}}
-                                {% if task.is_bseller == "on" %}
-                                <i class = "fas fa-exclamation-circle light-blue-text text-lighten-2 tooltipped"
-                                    data - position = "right" data - tooltip = "Bestseller!" > </i >
-                                {% endif %}
+                                <span class = "card-title" > {{book.book_name}}
+                                
                                 </span>
                             </div >
                             <div class = "card-action" >
-                                {% if session.user|lower == task.created_by|lower or session.user|lower == "admin"|lower %}
-                                <a href = "{{ url_for('delete_task', task_id=task._id) }}"
+                                {% if session.user|lower == book.created_by|lower or session.user|lower == "admin"|lower %}
+                                <a href = "{{ url_for('delete_book', book_id=book._id) }}"
                                     class = "btn-small green accent-4 black-text" > Delete </a >
-                                <a href = "{{ url_for('edit_task', task_id=task._id) }}"
+                                <a href = "{{ url_for('edit_book', book_id=book._id) }}"
                                     class = "btn-small light-blue lighten-1 black-text" > Edit </a >
                                 {% endif %}
-                                <a href = "{{ url_for('get_book', task_id=task._id) }}"
-                                    class = "btn-small green lighten-1 black-text" > More </a >
+                                <a href = "{{ url_for('get_book', book_id=book._id) }}"
+                                    class = "btn-small green lighten-1 black-text" > More Details</a >
                             </div>
                         </div>
                     </div >

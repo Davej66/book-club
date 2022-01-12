@@ -25,14 +25,14 @@
     <!-- top navbar -->
     <nav class="nav-extended text-shadow light-blue">
       <div class="nav-wrapper">
-        <a href="{{ url_for('get_tasks') }}" class="brand-logo" style = "position:relative; left:80px; top:2px; ">  Book Club</a>
+        <a href="{{ url_for('get_books') }}" class="brand-logo" style = "position:relative; left:80px; top:2px; ">  Book Club</a>
 
         <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
         <ul class="right hide-on-med-and-down">
-          <li><a href="{{ url_for('get_tasks') }}">Home</a></li>
+          <li><a href="{{ url_for('get_books') }}">Home</a></li>
           {% if session.user %}
           <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
-          <li><a href="{{ url_for('add_task') }}">New Book</a></li>
+          <li><a href="{{ url_for('add_book') }}">New Book</a></li>
           {% if session.user|lower == "admin"|lower %}
           <li><a href="{{ url_for('get_categories') }}">Manage Categories</a></li>
           {% endif %}
@@ -49,12 +49,12 @@
     <!-- mobile sidenav -->
     <ul class="sidenav" id="mobile-demo">
       <li>
-        <h4 class="center-align light-blue-text text-darken 4">Book Club</h4>
+        <h4 class="center-align black-text">Book Club</h4>
       </li>
-      <li><a href="{{ url_for('get_tasks') }}">Home</a></li>
+      <li><a href="{{ url_for('get_books') }}">Home</a></li>
       {% if session.user %}
       <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
-      <li><a href="{{ url_for('add_task') }}">New Task</a></li>
+      <li><a href="{{ url_for('add_book') }}">New Book</a></li>
       {% if session.user|lower == "admin"|lower %}
       <li><a href="{{ url_for('get_categories') }}">Manage Categories</a></li>
       {% endif %}
@@ -89,18 +89,12 @@
   <footer class="page-footer">
     <div class="container">
         <div class="row">
-            <div class="col s6">
+            <div class="col s12 center">
                 <h3 class="white-text">About</h3>
-                <p class="grey-text text-lighten-4">Book club was created by David Jacobs.<br>
+                <p class="grey-text text-lighten-4" >Book club was created by David Jacobs.<br>
                     The hope is bring book lovers a resource to discover and share their book experience, good and
                     on this website.
                 </p>
-            </div>
-            <div class="col s3 offset-s3">
-                <h3 class="white-text">Links</h3>
-                <ul>
-                   
-                </ul>
             </div>
         </div>
     </div>

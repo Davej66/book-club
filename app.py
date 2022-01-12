@@ -19,21 +19,20 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
-# Retrieves all books
+
 @app.route("/")
-@app.route("/get_tasks")
-def get_tasks():
-    # Retrieves all books
-    tasks = list(mongo.db.tasks.find())
-    return render_template("tasks.html", tasks=tasks) 
+@app.route("/get_books")
+def get_books():
+    books = list(mongo.db.books.find())
+    return render_template("books.html", books=books)
 
 
 @app.route("/search", methods=["GET", "POST"])
 def search():
     query = request.form.get("query")
-    tasks = list(mongo.db.tasks.find({"$text": {"$search": query}}))
-    return render_template("tasks.html", tasks=tasks)
-  
+    books = list(mongo.db.books.find({"$text": {"$search": query}}))
+    return render_template("books.html", books=books)
+
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -52,8 +51,7 @@ def register():
             "email": request.form.get("email").lower(),
             "is_admin": is_admin,
             "admin": "no",
-            "password": generate_password_hash(request.form.get("password")),
-            "user_avatar": request.form.get("user_avatar")
+            "password": generate_password_hash(request.form.get("password"))
         }
         mongo.db.users.insert_one(register)
 
@@ -74,14 +72,12 @@ def login():
 
         if existing_user:
             # ensure hashed password matches user input
-            if check_password_hash(
-                existing_user["password"], request.form.get("password")):
-                    session["user"] = request.form.get("username").lower()
-                    flash("Welcome, {}".format(
-                        request.form.get("username")))
-                    return redirect(url_for(
-                        "profile", username=session["user"]))
-                
+            if check_password_hash(existing_user["password"], request.form.get("password")):
+                session["user"] = request.form.get("username").lower()
+                flash("Welcome, {}".format(request.form.get("username")))
+                return redirect(url_for(
+                    "profile", username=session["user"]))
+
             else:
                 # invalid password match
                 flash("Incorrect Username and/or Password")
@@ -97,14 +93,15 @@ def login():
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
-    tasks = list(mongo.db.tasks.find())
+    books = list(mongo.db.books.find())
     reviews = list(mongo.db.reviews.find())
     # grab the session user's username from db
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
 
     if session["user"]:
-        return render_template("profile.html", username=username, tasks=tasks, reviews=reviews)
+        return render_template("profile.html", username=username, 
+            books=books, reviews=reviews)
 
     return redirect(url_for("login"))
 
@@ -117,11 +114,11 @@ def logout():
     return redirect(url_for("login"))
 
 
-@app.route("/add_task", methods=["GET", "POST"])
-def add_task():
+@app.route("/add_book", methods=["GET", "POST"])
+def add_book():
     if request.method == "POST":
         is_bseller = "on" if request.form.get("is_bseller") else "off"
-        task = {
+        book = {
             "category_name": request.form.get("category_name"),
             "book_name": request.form.get("book_name"),
             "book_author": request.form.get("book_author"),
@@ -132,16 +129,16 @@ def add_task():
             "book_cover": request.form.get("book_cover"),
             "created_by": session["user"]
         }
-        mongo.db.tasks.insert_one(task)
-        flash("Task Successfully Added")
-        return redirect(url_for("get_tasks"))
+        mongo.db.books.insert_one(book)
+        flash("Book Successfully Added")
+        return redirect(url_for("get_books"))
 
     categories = mongo.db.categories.find().sort("category_name", 1)
-    return render_template("add_task.html", categories=categories)
+    return render_template("add_book.html", categories=categories)
 
 
-@app.route("/edit_task/<task_id>", methods=["GET", "POST"])
-def edit_task(task_id):
+@app.route("/edit_book/<book_id>", methods=["GET", "POST"])
+def edit_book(book_id):
     if request.method == "POST":
         is_bseller = "on" if request.form.get("is_bseller") else "off"
         submit = {
@@ -155,20 +152,20 @@ def edit_task(task_id):
             "book_cover": request.form.get("book_cover"),
             "created_by": session["user"]
         }
-        print({"_id": ObjectId(task_id)}, submit)
-        mongo.db.tasks.replace_one({"_id": ObjectId(task_id)}, submit)
+        print({"_id": ObjectId(book_id)}, submit)
+        mongo.db.books.replace_one({"_id": ObjectId(book_id)}, submit)
         flash("Task Successfully Updated")
 
-    task = mongo.db.tasks.find_one({"_id": ObjectId(task_id)})
+    book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
-    return render_template("edit_task.html", task=task, categories=categories)
+    return render_template("edit_book.html", book=book, categories=categories)
 
 
-@app.route("/delete_task/<task_id>")
-def delete_task(task_id):
-    mongo.db.tasks.delete_one({"_id": ObjectId(task_id)})
+@app.route("/delete_book/<book_id>")
+def delete_book(book_id):
+    mongo.db.books.delete_one({"_id": ObjectId(book_id)})
     flash("Task Successfully Deleted")
-    return redirect(url_for("get_tasks"))
+    return redirect(url_for("get_books"))
 
 
 @app.route("/get_categories")
@@ -211,29 +208,29 @@ def delete_category(category_id):
     return redirect(url_for("get_categories"))
 
 
-@app.route("/get_book/<task_id>", methods=["GET", "POST"])
-def get_book(task_id):
-    task = mongo.db.tasks.find_one({"_id": ObjectId(task_id)})
+@app.route("/get_book/<book_id>", methods=["GET", "POST"])
+def get_book(book_id):
+    book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
     reviews = list(mongo.db.reviews.find())
     categories = mongo.db.categories.find().sort("category_name", 1)
 
     if request.method == "POST":
         review_details = {
             "book_review": request.form.get("book_review"),
-            "book_title": task["book_name"],
+            "book_title": request.form.get["book_name"],
             "reviewed_by": session["user"],
             "created_on": datetime.now()
         }
 
         mongo.db.reviews.insert_one(review_details)
         flash("Category Successfully Updated")
-    
-    return render_template("get_book.html", task=task, categories=categories, reviews=reviews)
+
+    return render_template("get_book.html", book=book, categories=categories, reviews=reviews)
 
 
- # The 404 page 
+# The 404 page
 @app.errorhandler(404)
-def page_not_found(e):
+def page_not_found(err):
     """
     On 404 error passes user to custom 404 page
     """
@@ -247,7 +244,7 @@ def internal_error(err):
     On 500 error passes user to custom 500 page
     """
     return render_template('500.html'), 500
-       
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),

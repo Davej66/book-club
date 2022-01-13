@@ -139,7 +139,77 @@ Each of these possible paths has been tested repeatedly.
 -	Click on the "Delete" button on the review section and the right review is deleted. The feedback message pops up on the page informing the review was deleted.
 -	Resize the window in the iPad and mobile screen size to make sure all sections are responsive and the layout changes on different screen sizes.
 
+### **Add a Book Page**
 
+-	Click on every single field and make sure they have the applied active style.
+-	Try to submit the form with every field empty at a time and make sure it shows the validation error message.
+-	Fill out the form accordingly and submit it. Next check if the book is successfully added and with the correct detail and a feedback message informing the book has been          added.
+-	Resize the window in the iPad and mobile screen size to make sure all sections are responsive and the layout changes on different screen sizes.
 
+### **Sign In page**
 
+-	Sign Out of the account and make sure the feedback message pops up on the window informing that you have been logged out.
+-	Sign out the account and make sure you are navigated to the login page.
+-	Click on every field to assure that the active style is applied to the fields and that the labels jump up and make space for the input value.
+-	Click on the "Log In" button and make sure you are navigated to your profile page.
+-	Check the "Register Account" link underneath the "Log In" button and make sure it navigates to the Sign Up page.
+-	Try to log in with an incorrect username and/or password and make sure you won't be logged in and that a feedback message pops up on the window informing that the "Incorrect    Username and/or Password".
+-	Resize the window in the iPad and mobile screen size to make sure all sections are responsive and the layout changes on different screen sizes and that the image card won't      be displayed on the mobile screens.
+
+### **Sign In page**
+
+-	Click on every field to assure that the active style is applied to the fields and that the labels jump up and make space for the input value.
+-	Try to create an account and leave a field blank to check if the validation error messages pop up.
+-	Try to create a username that already exists in the database and make sure a message pops up on the page informing that the username already exists.
+-	Try to fill out the form correctly and click on the "Register" button and make sure you are navigated to your profile page with a feedback message informing that you have        registered successfully.
+-	Try to create a password and then add a non-matching password in the confirm password field and make sure the error message pops up.
+-	Check the "Log In" link underneath the "Register" button and make sure it navigates to the Sign In page.
+-	Resize the window in the iPad and mobile screen size to make sure all sections are responsive and the layout changes on different screen sizes and that the image card won't      be displayed on the mobile screen.
+
+### **Sticky back-to-top button**
+
+-	Verify that the button shows up in the right position on every page.
+-	Click on the button to confirm that the button works.
+-	Open the page in the "Developer Tool", choose a mobile device and ensure that the size and spacing of the button change properly.
+-	Click on the button and make sure that the animation effect works properly and the page scrolls to the top smoothly.
+
+### **Footer**
+
+-	Confirm that footer code is identical on all HTML pages.
+-	Try to log in and check the footer on every single page to make sure that the links embedded in the footer updates accordingly.
+-	Try to log out and check the quick access links in the footer alters according to the navigation bar links on different pages.
+-	Resize the window in the iPad and mobile screen size to make sure all sections are responsive and the layout changes on different screen sizes.
+-	From the home page, check if all the book collection links are accessible from the footer as well, and check every link separately.
+
+### **Custom 404 Page**
+
+-	Try to change the pathname in the URL manually to a random name and make sure that the custom 404 page appears on the screen informing you that the page is not found.
+-	Click on the "Let's Go Home" button and make sure it returns you to the home page.
+
+### **Custom 500 Page**
+
+I have tested the live website on the following browsers and devices;
+-	Google Chrome
+-	Safari
+-	Firefox
+-	IE
+-	Edge
+
+### **Devices**
+-	iPhone X/12 pro (Chrome Developer Tools, On physical devices)
+-	Galaxy S21 (Chrome Developer Tools, On physical device)
+-	iPad (Chrome Developer Tools, On physical devices)
+-	iPad Pro (Chrome Developer Tools)
+-	iPad mini (Chrome Developer Tools)
+
+Browser	Issues
+Google Chrome	No issues found.
+Safari	No issues found
+Firefox	No issues found
+IE	No issues found
+Edge	No issues found
+
+-	All the links and buttons on the website were checked repeatedly.
+-	The website has been manually tested and evaluated by my mentor "Richard Wells" and I was provided with valuable feedback and ideas.
+-	Friends and acquaintances were asked to review the website, its content, and their user experience.
 

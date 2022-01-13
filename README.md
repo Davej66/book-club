@@ -20,6 +20,18 @@ All pages on this website are responsive to desktop, iPad and, mobile screens. E
 - As a Returning Visitor, I would like to delete a review I left on a book.
 
 
+## **Wireframe Mockups:**
+
+### Desktp
+![image](https://user-images.githubusercontent.com/85559896/149306958-9af12468-ded7-4fad-ba7b-0bd334615b1a.png)
+
+### Tablet
+![image](https://user-images.githubusercontent.com/85559896/149309073-68a94bfd-d457-4437-b285-0897712a847d.png)
+
+### Mobile
+![image](https://user-images.githubusercontent.com/85559896/149308378-0ce3f763-45e3-46c4-8be7-90e00beecd9d.png)
+
+
 # **Features**
 
 ## **Existing Features**
@@ -213,7 +225,7 @@ I have used the following 5 websites to gather inspiration for content.
 - https://www.librarything.com/home Book review site
 - https://www.w3schools.com/  The up button [the link here to thread to develop this.](https://www.w3schools.com/howto/howto_js_scroll_to_top.asp)
 - https://materializecss.com/ Additional features not covered in the course.
-- https://www.amazon.co.uk/ Image links were used from this website
+- https://www.amazon.co.uk/ and https://blackwells.co.uk/ Image links were used from Amazon and Blackwell's
 
 
 

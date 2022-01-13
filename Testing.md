@@ -56,5 +56,77 @@ Each of these possible paths has been tested repeatedly.
 
 ## ** Testing client stories from UX section of README.md **
 
+1. As a first-time visitor, I would like to find a worth reading book.
+ - I browse the book list on the home page until I find something interesting, click on the "More Details" button book once found it, read the description and information          provided on the page, click on the " Purchase a copy here " button to head to the store.
+
+2. As a first-time visitor, I would like to find out more about my favourite book and read other readers' reviews.
+ - I type the book title in the search box find my favourite book, or
+ - Type in the category of my favourite book, scroll the page down to find my intended book.
+
+3. As a first-time visitor, I would like to become a member of a community to be able to add my favourite book to share with the website.
+ - I navigate to the sign-up page and create an account, following that I will be navigated to the profile page where I can see the "Add a Book" button on top of the page as        well as in the navigation bar. Finally, I enter the requested data in each field and the book I intend will be added to the website. I will be provided with a feedback          message confirming that I have added the book.
+
+4. As a returning visitor, I would like to edit my profile and info.
+ - I log in to my account, click on the edit-profile button to get navigated to the edit profile page. On the edit-profile page, I see a pre-filled form with my account detail      where I can update any field I intend and submit the form to modify my profile. I will be provided with a feedback message confirming that I updated my profile.
+
+5. As a returning visitor, I would like to write a review about a book I have recently read/purchased from the online store.
+ - I first log in to my account, then I will look for the book I am looking for, after having it found I scroll down the page until I see the review form, fill out the form, and    submit it. I will be provided with a feedback message thanking me for the review.
+
+6. As a returning visitor, I would like to delete a review I left on a book.
+ - I log in to my account, navigate to my profile page, find the review I am looking for in the "Added reviews" section and click on the delete button. I will be provided with a    feedback message confirming that I deleted the review.
+ - I log in to my account, type the book title on which I left the review, click on the book once it is found, scroll down the page to the review section, find my added review      among other reviews (Which is pretty distinguishable since there is a red "Delete" button on the review I added) and finally, click on the "Delete" button. I will be provided    with a feedback message confirming that I deleted the review.
+
+7. As a returning visitor, I would like to edit a book I added to the website.
+ - I log in to my account, navigate to the profile page, scroll down the page until I find the intended book, click on the "Edit" button, I will be navigated to a page with a      pre-filled form with the book details and from there I will be able to modify any field I want and finally click on the "Edit button". I will be provided with a feedback        message confirming that I have edited the book.
+ - I log in to my account, type the book title I want to edit in the search box, click on the book, from the book detail page I can see an "Edit" button, I click on that, and      next I will be navigated to a page with a pre-filled form with the book details and from there I will be able to modify any field I want and finally click on the "Edit          button". I will be provided with a feedback message confirming that I Edited the book.
+
+8. As a returning visitor, I would like to Remove a book I added to the website.
+ - I log in to my account, navigate to the profile page, scroll down the page until I find the intended book, click on the "Delete" button I will be provided with a feedback        message confirming that I deleted the book.
+
+## ** Manual (logical) testing of all elements and functionality on every page.**
+### **Navigation Bar**
+
+- Click on every single link on the navigation bar to assure they are all properly working correctly.
+- Check the page URL and make sure it shows the right pathname. (http://book-club-dj.herokuapp.com/get_books)
+- Check the accessibility to the links that are supposed to be visible on the two different states of logged In/Out.
+- Change the screen size from desktop to tablet to verify that the navigation bar is responsive and switches from the inline menu to the burger icon dropdown menu at the           appropriate place.
+- Click on the burger icon to make sure the menu opens from the right side of the screen.
+- Check the search box size and function on the home page.
+- Type a book title that is known it exists and make sure it will be displayed.
+- Type an author name and make sure it displays all the books from that author.
+- Type a title or an author name that exists in the database and make sure the "No Results found" text displays on the screen.
+- Click on the reset button and make sure it resets the searches and displays all books.
+
+### **Home page**
+
+- Resize the window size and make sure that the links have proper position and padding on the iPad and mobile screen.
+- Scroll down the page and check the layout of the book cards on the home page.
+- Click on the book cards and make sure they navigate to the corresponding book detail page.
+- Resize the window in the iPad and mobile screen size to make sure all sections are responsive and the layout changes on different screen sizes.
+
+### **Book Detail page**
+- Click on the back button and make sure it returns to the previous home page on the same position.)
+- Check the page URL and make sure it shows the right path name as expected and that the book is triggered by its ObjectId. 
+- (http://book-club-dj.herokuapp.com/get_book/61defd67924046884ddb972d)
+- Click on the "Purchase a copy here" button and make sure it navigates to the store in a new tab.
+- Click on the "Edit" button and make sure it navigates to the edit book page.
+- Try to write a review in the review form and submit it when the user is not logged in and make sure it returns to the login page with a feedback message asking the user to       login first.
+- Try to submit a review when the user is logged in and make sure that the review is submitted successfully, and a message informing them of the update.
+- After submitting a review, scroll down the page and make sure your review is displayed in the review section with correct data.
+- Check if the time for the added review is shown and was the correct time.
+- Resize the window in the iPad and mobile screen size to make sure all sections are responsive and the layout changes on different screen sizes.
+
+### **Edit Book Page**
+ - Check the page URL and make sure it shows the right path name as expected and that the book is triggered by its ObjectId to be edited. 
+   For instance(http://book-club-dj.herokuapp.com/edit_book/61df6d0026fd31efbf646070)
+ -  Make sure the form is already pre-filled with the book details.
+ -  Try To change any field from the form and submit the form. Make sure the book is updated as expected and it redirects to the book detail page with the updated data.
+ - Try to uncheck the best seller check box and make sure that after the submission the best seller badge is removed from the title.
+ -	Try to modify any field on the form except the title and make sure it updates the form accordingly.
+ - Resize the window in the iPad and mobile screen size to make sure all sections are responsive and the layout changes on different screen sizes.
+
+
+
+
 
 

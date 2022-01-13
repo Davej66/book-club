@@ -106,6 +106,14 @@ def profile(username):
     return redirect(url_for("login"))
 
 
+@app.route("/delete_reviewy/<review_id>")
+def delete_review(review_id):
+    mongo.db.reviews.delete_one({"_id": ObjectId(review_id)})
+    flash("Review Successfully Deleted")
+    return redirect(url_for(
+                    "profile", username=session["user"]))    
+
+
 @app.route("/logout")
 def logout():
     # remove user from session cookie
@@ -217,13 +225,13 @@ def get_book(book_id):
     if request.method == "POST":
         review_details = {
             "book_review": request.form.get("book_review"),
-            "book_title": request.form.get["book_name"],
+            "book_title": book["book_name"],
             "reviewed_by": session["user"],
             "created_on": datetime.now()
         }
 
         mongo.db.reviews.insert_one(review_details)
-        flash("Category Successfully Updated")
+        flash("Review Successfully Updated")
 
     return render_template("get_book.html", book=book, categories=categories, reviews=reviews)
 
@@ -249,4 +257,4 @@ def internal_error(err):
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
-            debug=True)
+            debug=False)

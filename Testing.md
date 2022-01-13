@@ -117,14 +117,27 @@ Each of these possible paths has been tested repeatedly.
 - Resize the window in the iPad and mobile screen size to make sure all sections are responsive and the layout changes on different screen sizes.
 
 ### **Edit Book Page**
- - Check the page URL and make sure it shows the right path name as expected and that the book is triggered by its ObjectId to be edited. 
+- Check the page URL and make sure it shows the right path name as expected and that the book is triggered by its ObjectId to be edited. 
    For instance(http://book-club-dj.herokuapp.com/edit_book/61df6d0026fd31efbf646070)
- -  Make sure the form is already pre-filled with the book details.
- -  Try To change any field from the form and submit the form. Make sure the book is updated as expected and it redirects to the book detail page with the updated data.
- - Try to uncheck the best seller check box and make sure that after the submission the best seller badge is removed from the title.
- -	Try to modify any field on the form except the title and make sure it updates the form accordingly.
- - Resize the window in the iPad and mobile screen size to make sure all sections are responsive and the layout changes on different screen sizes.
+-  Make sure the form is already pre-filled with the book details.
+-  Try To change any field from the form and submit the form. Make sure the book is updated as expected and it redirects to the book detail page with the updated data.
+-  Try to uncheck the best seller check box and make sure that after the submission the best seller badge is removed from the title.
+-	Try to modify any field on the form except the title and make sure it updates the form accordingly.
+-  Resize the window in the iPad and mobile screen size to make sure all sections are responsive and the layout changes on different screen sizes.
 
+### **Profile Page**
+
+-	Make sure your account details are displayed correctly on the profile page.
+-	Check the page URL and make sure the username is displayed after the profile path. For instance (http://book-club-dj.herokuapp.com/profile/paula)
+-	Click on the "Edit Profile" button and make sure it navigates to the edit profile page with a pre-filled form with the user's account info.
+-	Click on the "Add a Book" button and make sure it navigates to the Add a book page.
+-	Scroll down the page and check the list of the books added by the user.
+-	Click on the "Edit" button on the added books and make sure it works.
+-	Submit the deletion and make sure the feedback message pops up on the page informing the book was deleted.
+-	Make sure a "Delete" button is featured on every review added by the user.
+-	Check the time of the added review is correct.
+-	Click on the "Delete" button on the review section and the right review is deleted. The feedback message pops up on the page informing the review was deleted.
+-	Resize the window in the iPad and mobile screen size to make sure all sections are responsive and the layout changes on different screen sizes.
 
 
 

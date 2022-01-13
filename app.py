@@ -23,12 +23,19 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/get_books")
 def get_books():
+    """
+    Recalls all books in the db
+    """
     books = list(mongo.db.books.find())
     return render_template("books.html", books=books)
 
 
 @app.route("/search", methods=["GET", "POST"])
 def search():
+    """
+   allows the db to search from input qery and call
+   the required books
+    """
     query = request.form.get("query")
     books = list(mongo.db.books.find({"$text": {"$search": query}}))
     return render_template("books.html", books=books)
@@ -36,6 +43,9 @@ def search():
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    """
+    allow user to enter detail to gain membership
+    """
     if request.method == "POST":
         is_admin = "on" if request.form.get("is_urgent") else "off"
         # check if username already exists in db
@@ -65,6 +75,10 @@ def register():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    """
+    checks login details against already exists
+    and the correc password 
+    """
     if request.method == "POST":
         # check if username exists in db
         existing_user = mongo.db.users.find_one(
@@ -93,6 +107,10 @@ def login():
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
+    """
+    Recalls from the db the user's details and the books,
+    reviews added by that user
+    """
     books = list(mongo.db.books.find())
     reviews = list(mongo.db.reviews.find())
     # grab the session user's username from db
@@ -108,6 +126,9 @@ def profile(username):
 
 @app.route("/delete_reviewy/<review_id>")
 def delete_review(review_id):
+    """
+    Deleted the selected revire from the db
+    """
     mongo.db.reviews.delete_one({"_id": ObjectId(review_id)})
     flash("Review Successfully Deleted")
     return redirect(url_for(
@@ -124,6 +145,9 @@ def logout():
 
 @app.route("/add_book", methods=["GET", "POST"])
 def add_book():
+    """
+   Adds data input as a new book to the db
+    """
     if request.method == "POST":
         is_bseller = "on" if request.form.get("is_bseller") else "off"
         book = {
@@ -147,6 +171,10 @@ def add_book():
 
 @app.route("/edit_book/<book_id>", methods=["GET", "POST"])
 def edit_book(book_id):
+    """
+    Recalls data from the db for the selected book and allows
+    this to be amened if required
+    """
     if request.method == "POST":
         is_bseller = "on" if request.form.get("is_bseller") else "off"
         submit = {
@@ -171,6 +199,9 @@ def edit_book(book_id):
 
 @app.route("/delete_book/<book_id>")
 def delete_book(book_id):
+    """
+    Deletes the selected book from the db
+    """
     mongo.db.books.delete_one({"_id": ObjectId(book_id)})
     flash("Task Successfully Deleted")
     return redirect(url_for("get_books"))
@@ -178,12 +209,18 @@ def delete_book(book_id):
 
 @app.route("/get_categories")
 def get_categories():
+    """
+    Recalls data from the db for categories
+    """
     categories = list(mongo.db.categories.find().sort("category_name", 1))
     return render_template("categories.html", categories=categories)
 
 
 @app.route("/add_category", methods=["GET", "POST"])
 def add_category():
+    """
+    Allows a new category to be added
+    """
     if request.method == "POST":
         category = {
             "category_name": request.form.get("category_name")
@@ -197,6 +234,9 @@ def add_category():
 
 @app.route("/edit_category/<category_id>", methods=["GET", "POST"])
 def edit_category(category_id):
+    """
+    Edits the selected category recalling data for it 
+    """
     if request.method == "POST":
         submit = {
             "category_name": request.form.get("category_name")
@@ -211,6 +251,9 @@ def edit_category(category_id):
 
 @app.route("/delete_category/<category_id>")
 def delete_category(category_id):
+    """
+    Dletes the selected category
+    """
     mongo.db.categories.delete_one({"_id": ObjectId(category_id)})
     flash("Category Successfully Deleted")
     return redirect(url_for("get_categories"))
@@ -218,6 +261,10 @@ def delete_category(category_id):
 
 @app.route("/get_book/<book_id>", methods=["GET", "POST"])
 def get_book(book_id):
+    """
+    Retrieves data for the selected book, and reviews.
+    also tllows a review to be made
+    """
     book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
     reviews = list(mongo.db.reviews.find())
     categories = mongo.db.categories.find().sort("category_name", 1)

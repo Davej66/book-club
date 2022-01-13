@@ -231,8 +231,10 @@ I have used the following 5 websites to gather inspiration for content.
 
 ## Acknowledgements
 
-Thanking my mentor [Richard Wells](https://github.com/D0nni387/) for his invaluable guidance and continuing support. His input during the mid-review, furthermore at the final review helped me with the project.
+Thanking my mentor [Richard Wells](https://github.com/D0nni387/) for his invaluable guidance and continuing support. His input & enthusiasm during the mid-review, furthermore at the final review was invaluable.
 
 Support from the slack community when seeking assistance for the wealth of infomation available.
+
+I have learned more in detail about how to complete my README from Anna Gilhespy's project available in codeinstitutes slack community template.
 
 
